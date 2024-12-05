@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/css/register.css">
+    <link rel="icon" href="assets/img/wikipedia.ico">
+    <title>Wiki_Register</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+<body >
+<div class="register" id="app">
+        <img src="assets/img/bg1(8).png" alt="register image" class="register__img">
+
+    <form action="" class="register__form">
+        <h1 class="register__title">Register</h1>
+
+        <div class="register__content">
+            <div class="register__box">
+                <i class="ri-user-3-line register__icon"></i>
+
+                <div class="register__box-input">
+                    <input v-model="realname" required class="register__input" id="register-realname" placeholder=" ">
+                    <label for="register-realname" class="register__label">Realname</label>
+                </div>
+            </div>
+
+            <div class="register__box">
+                <i class="ri-user-3-line register__icon"></i>
+
+                <div class="register__box-input">
+                    <input v-model="username" required class="register__input" id="register-account" placeholder=" ">
+                    <label for="register-account" class="register__label">Account</label>
+                </div>
+            </div>
+
+            <div class="register__box">
+                <i class="ri-lock-2-line register__icon"></i>
+
+                <div class="register__box-input" @click="focus()">
+                    <input v-model="password" type="password" required class="register__input" id="register-pass" placeholder=" ">
+                    <label for="register-pass" class="register__label">Password</label>
+                    <i class="ri-eye-off-line register__eye"></i>
+                </div>
+            </div>
+
+            <div class="register__box">
+                <i class="ri-lock-2-line register__icon"></i>
+
+                <div class="register__box-input" @click="focus()">
+                    <input v-model="NextPassword" type="password" required class="register__input" id="r-pass" placeholder=" ">
+                    <label for="r-pass" class="register__label">Next Password</label>
+                    <i class="ri-eye-off-line register__eye"></i>
+                </div>
+            </div>
+        </div>
+
+        <h5 class="register__check" style="display:none" ref="registerCheck">The password is not the same twice</h5>
+
+        <button type="button" class="register__button" @click="register()">Register</button>
+
+        <p class="register__register">
+            <a href="Login.html">Go back to Login</a>
+        </p>
+    </form>
+</div>
+
+<script>
+    axios.defaults.headers.post["Content-Type"] = "application/x-www-form-urlencoded";
+    const App = {
+        data() {
+            return {
+                realname: "",
+                username: "",
+                password: "",
+                NextPassword: ""
+            }
+        },
+        methods: {
+            focus() {
+                this.$refs.registerCheck.style.display = 'none'
+            },
+            register() {
+                let realname = this.realname;
+                let username = this.username;
+                let password = this.password;
+                let NextPassword = this.NextPassword;
+                if (password === NextPassword) {
+                    // 发起一个post请求
+                    axios({
+                        method: 'post',
+                        url: '/users/register',
+                        data: {
+                            realname: realname,
+                            username: username,
+                            password: password
+                        }
+                    }).then(function (resp) {
+                        if(resp.data=="1"){
+                            window.location.href = "http://localhost:8080/UserModule/Login.html"
+                        }
+                    });
+                } else {
+                    this.$refs.registerCheck.style.display = 'block'
+                }
+            }
+        }
+    }
+    const app = Vue.createApp(App)
+    app.mount('#app')
+</script>
+</body>
+</html>
