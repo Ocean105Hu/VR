@@ -63,18 +63,18 @@ public class UsersServiceImpl implements UsersService {
         sqlSession.close();
     }
 
-    @Override
-    public Manager selectManager(String account, String password) {
-        //获取对象
-        System.out.println(account);
-        SqlSessionFactory sqlSessionFactory = SqlSessionFactoryUtil.getSqlSessionFactory();
-        System.out.println(1);
-        SqlSession sqlSession = sqlSessionFactory.openSession();
-        ManagerMapper managerMapper = sqlSession.getMapper(ManagerMapper.class);
-        Manager manager = managerMapper.selectManager(account, password);
-        System.out.println(manager);
-        sqlSession.close();
-        return manager;
-    }
+//    @Override
+//    public Manager selectManager(String account, String password) {
+//        //获取对象
+//        System.out.println(account);
+//        SqlSessionFactory sqlSessionFactory = SqlSessionFactoryUtil.getSqlSessionFactory();
+//        System.out.println(1);
+//        SqlSession sqlSession = sqlSessionFactory.openSession();
+//        ManagerMapper managerMapper = sqlSession.getMapper(ManagerMapper.class);
+//        Manager manager = managerMapper.selectManager(account, password);
+//        System.out.println(manager);
+//        sqlSession.close();
+//        return manager;
+//    }
 
 }

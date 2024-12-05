@@ -7,5 +7,5 @@ public interface UsersService {
     void register(String name,String pass,String realname);
     Users retrieve(String realname,String userName);
     void modifyPass(String userName, String newPass);
-    Manager selectManager(String account,String password);
+//    Manager selectManager(String account,String password);
 }
