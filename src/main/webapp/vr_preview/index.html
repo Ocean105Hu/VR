@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<!--第一步: 引入 aframe.js 文件, 建议 0.8.0 版本-->
+		<script src="aframe.js"></script>
+		<title>VR增强现实-3D全景图</title>
+	</head>
+
+	<body>
+		<!--基础的DOM结构-->
+		<a-scene disable-inspector>
+			<!--资源文件-->
+			<a-assets>
+				<img src="jiazhuang/keting01.jpg" id="image">
+			</a-assets>
+			<!--天空-->
+			<a-sky src="#image" rotation="0 160 0"></a-sky>
+		</a-scene>
+		<script>
+			/*
+			 * DOM结构里面
+			 * a-scene 有一个属性 disable-inspector
+			 * 根据字面翻译就是: 禁用调试器
+			 * 下面这段代码的作用就是禁用掉 ctrl+alt+i 的方法
+			 * 就是这样
+			 */
+
+			AFRAME.registerComponent('disable-inspector', {
+				dependencies: ['inspector'],
+				init: function() {
+					this.el.components.inspector.remove();
+				}
+			});
+		</script>
+	</body>
+
+</html>
