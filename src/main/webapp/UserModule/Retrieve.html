@@ -11,10 +11,10 @@
 </head>
 <body>
 <div class="retrieve" id="app">
-    <img src="assets/img/bg1(8).png" alt="retrieve image" class="retrieve__img">
+    <img src="assets/img/bg1(8).png" alt="retrieve image" class="retrieve__img">  <!--背景-->
 
     <form action="" class="retrieve__form">
-        <h1 class="retrieve__title">Retrieve</h1>
+        <h1 class="retrieve__title">密码找回</h1>
 
         <div class="retrieve__content" style="display: grid" ref="EnterVerify">
 
@@ -23,7 +23,7 @@
 
                 <div class="retrieve__box-input">
                     <input v-model="realname" required class="retrieve__input" id="retrieve-account" placeholder=" ">
-                    <label for="retrieve-account" class="retrieve__label">Realname</label>
+                    <label for="retrieve-account" class="retrieve__label">真实名字</label>
                 </div>
             </div>
 
@@ -32,7 +32,7 @@
 
                 <div class="retrieve__box-input">
                     <input v-model="username" required class="retrieve__input" id="retrieve-pass" placeholder=" ">
-                    <label for="retrieve-pass" class="retrieve__label">Username</label>
+                    <label for="retrieve-pass" class="retrieve__label">用户账号</label>
                     <i class="ri-eye-off-line retrieve__eye" ></i>
                 </div>
             </div>
@@ -63,10 +63,10 @@
         <h5 class="register__check" style="    margin-left: 0.2rem;
     margin-bottom: 1.5rem;display:none" ref="registerCheck">The password is not the same twice</h5>
 
-        <button type="button" class="retrieve__button" @click="retrieve()" ref="Verify" style="display: block">Verify
+        <button type="button" class="retrieve__button" @click="retrieve()" ref="Verify" style="display: block">验证
         </button>
-        <button type="button" class="retrieve__button" @click="revise()" ref="Confirm" style="display: none">Confirm
-        </button>
+<!--        <button type="button" class="retrieve__button" @click="revise()" ref="Confirm" style="display: none">Confirm-->
+<!--        </button>-->
 
         <p class="retrieve__retrieve">
             <a href="Login.html">Come to think of it</a>
