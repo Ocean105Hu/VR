@@ -11,10 +11,10 @@
 </head>
 <body >
 <div class="register" id="app">
-        <img src="assets/img/bg1(8).png" alt="register image" class="register__img">
+        <img src="assets/img/gd.jpg" alt="register image" class="register__img">
 
     <form action="" class="register__form">
-        <h1 class="register__title">Register</h1>
+        <h1 class="register__title">账号注册</h1>
 
         <div class="register__content">
             <div class="register__box">
@@ -22,7 +22,7 @@
 
                 <div class="register__box-input">
                     <input v-model="realname" required class="register__input" id="register-realname" placeholder=" ">
-                    <label for="register-realname" class="register__label">Realname</label>
+                    <label for="register-realname" class="register__label">真实姓名</label>
                 </div>
             </div>
 
@@ -31,7 +31,7 @@
 
                 <div class="register__box-input">
                     <input v-model="username" required class="register__input" id="register-account" placeholder=" ">
-                    <label for="register-account" class="register__label">Account</label>
+                    <label for="register-account" class="register__label">账号</label>
                 </div>
             </div>
 
@@ -40,7 +40,7 @@
 
                 <div class="register__box-input" @click="focus()">
                     <input v-model="password" type="password" required class="register__input" id="register-pass" placeholder=" ">
-                    <label for="register-pass" class="register__label">Password</label>
+                    <label for="register-pass" class="register__label">密码</label>
                     <i class="ri-eye-off-line register__eye"></i>
                 </div>
             </div>
@@ -50,7 +50,7 @@
 
                 <div class="register__box-input" @click="focus()">
                     <input v-model="NextPassword" type="password" required class="register__input" id="r-pass" placeholder=" ">
-                    <label for="r-pass" class="register__label">Next Password</label>
+                    <label for="r-pass" class="register__label">密码确认</label>
                     <i class="ri-eye-off-line register__eye"></i>
                 </div>
             </div>
@@ -58,7 +58,7 @@
 
         <h5 class="register__check" style="display:none" ref="registerCheck">The password is not the same twice</h5>
 
-        <button type="button" class="register__button" @click="register()">Register</button>
+        <button type="button" class="register__button" @click="register()">注册</button>
 
         <p class="register__register">
             <a href="Login.html">Go back to Login</a>
