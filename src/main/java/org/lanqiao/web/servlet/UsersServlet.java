@@ -23,6 +23,7 @@ public class UsersServlet extends BaseServlet {
         //获取请求
         String name = req.getParameter("username");
         String pass = req.getParameter("password");
+
 //        String s = req.getReader().readLine();
 //        System.out.println(s);
 //        HashMap hashMap = JSONObject.parseObject(s, HashMap.class);
@@ -55,7 +56,8 @@ public class UsersServlet extends BaseServlet {
 //            //管理员登录
 //            write.write("1");
 //            //用户登录
-//        } else if (users != null) {
+//        } else
+        if (users != null) {
             if ("1".equals(loginCheckLabel)) {
                 //cookie存储
                 Cookie c_name = new Cookie("username", name);
@@ -69,7 +71,8 @@ public class UsersServlet extends BaseServlet {
             }
             //用户登录
             write.write("2");
-//        } else write.write("0");
+            write.write(users.getUserId());
+        } else write.write("0");
         //登录失败
 
 
