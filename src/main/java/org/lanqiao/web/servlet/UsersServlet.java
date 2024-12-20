@@ -70,7 +70,6 @@ public class UsersServlet extends BaseServlet {
                 resp.addCookie(c_pass);
             }
             //用户登录
-            write.write("2");
             String id = String.valueOf(users.getUserId());
             write.write(id);
         } else write.write("0");
