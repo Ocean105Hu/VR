@@ -3,17 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <title>用户管理</title>
-    <!--   <link rel="shortcut icon" type="image/x-icon" href="../../favicon.ico"/>
-       <link rel="stylesheet" href="../../layui/css/layui.css">
-       <link rel="stylesheet" href="../../css/common.css">
-
-       <link rel="stylesheet" href="../../layui/extend/dtree.css">
-       <link rel="stylesheet" href="../../layui/extend/font/dtreefont.css">
-
-       &lt;!&ndash; 图标 &ndash;&gt;
-       <link rel="stylesheet" href="../../static/CaoMei/style.css">
-   -->
-
     <style>
         .el-table .warning-row {
             background: oldlace;
@@ -28,61 +17,24 @@
 
 <body>
 <div id="app">
-
-    <!--搜索表单-->
-    <el-form :inline="true" :model="manager" class="demo-form-inline">
-        <el-form-item label="当前状态">
-            <el-select v-model="manager.status" placeholder="当前状态">
-                <el-option label="启用" value="1"></el-option>
-                <el-option label="禁用" value="0"></el-option>
-            </el-select>
-        </el-form-item>
-
-        <el-form-item label="名字">
-            <el-input v-model="manager.managerName" placeholder="名字"></el-input>
-        </el-form-item>
-
-        <el-form-item label="部门">
-            <el-input v-model="manager.managerAccout" placeholder="部门"></el-input>
-        </el-form-item>
-
-        <el-form-item>
-            <el-button type="primary" @click="onSubmit">查询</el-button>
-        </el-form-item>
-    </el-form>
-
-    <!--按钮-->
-
     <el-row>
-        <!--        <el-button type="danger" plain @click="deleteByIds" >批量删除</el-button>-->
         <el-button type="primary" plain @click="dialogVisible = true">新增</el-button>
     </el-row>
-
     <!--添加数据对话框表单-->
     <el-dialog
             title="编辑信息"
             :visible.sync="dialogVisible"
             width="20%"
     >
-        <el-form ref="form" :model="manager" label-width="80px">
+        <el-form ref="form" :model="brand" label-width="80px">
             <el-form-item label="姓名">
-                <el-input v-model="manager.brandName"></el-input>
-            </el-form-item>
-
-            <el-form-item label="部门">
-                <el-input v-model="manager.companyName"></el-input>
+                <el-input v-model="brand.brandName"></el-input>
             </el-form-item>
 
             <el-form-item label="密码">
-                <el-input v-model="manager.managerPassword"></el-input>
+                <el-input v-model="brand.ordered"></el-input>
             </el-form-item>
 
-            <el-form-item label="状态">
-                <el-switch v-model="brand.status"
-                           active-value="1"
-                           inactive-value="0"
-                ></el-switch>
-            </el-form-item>
 
             <el-form-item>
                 <el-button type="primary" @click="addBrand">提交</el-button>
@@ -118,12 +70,6 @@
             >
             </el-table-column>
             <el-table-column
-                    prop="managerAccout"
-                    label="部门"
-                    align="center"
-            >
-            </el-table-column>
-            <el-table-column
                     prop="managerPassword"
                     label="密码"
                     align="center"
@@ -140,45 +86,10 @@
                 </el-row>
 
             </el-table-column>
-
-
-            <!-- <el-table-column
-                     align="right">
-                 <template slot="header" slot-scope="scope">
-                     <el-input
-                             v-model="search"
-                             size="mini"
-                             placeholder="输入关键字搜索"/>
-                 </template>
-                 <template slot-scope="scope">
-                     <el-button
-                             size="mini"
-                             @click="handleEdit(scope.$index, scope.row)">Edit</el-button>
-                     <el-button
-                             size="mini"
-                             type="danger"
-                             @click="handleDelete(scope.$index, scope.row)">Delete</el-button>
-                 </template>
-             </el-table-column>-->
         </el-table>
     </template>
 
-
-    <!--分页工具条-->
-    <el-pagination
-            @size-change="handleSizeChange"
-            @current-change="handleCurrentChange"
-            :current-page="currentPage"
-            :page-sizes="[5, 10, 15, 20]"
-            :page-size="5"
-            layout="total, sizes, prev, pager, next, jumper"
-            :total="totalCount">
-    </el-pagination>
-
-
 </div>
-
-<!--E:\A数据库\SqlJdbc\Wiki\src\main\webapp\BackendModule\js\axios-0.18.0.js-->
 
 <script src="../../js/axios-0.18.0.js"></script>
 <script src="../../js/vue.js"></script>
@@ -189,43 +100,23 @@
     new Vue({
         el: "#app",
         mounted() {
-
             this.selectAll();
-
-            // //当页面加载完成后，发送异步请求，获取数据
-            // var _this=this;
-            // axios({
-            //     method: "get",
-            //     url: "http://localhost/brand_case_war/brand/selectAll"
-            // }).then(function (resp) {
-            //     _this.tableData=resp.data;//把从数据库中获取的数据给表格
-            // })
         },
 
         methods: {
             //查询分页数据的方法
             selectAll() {
-                //当页面加载完成后，发送异步请求，获取数据
-                /*  var _this=this;
-                  axios({
-                      method: "get",
-                      url: "http://localhost/brand_case_war/brand/selectAll"
-                  }).then(function (resp) {
-                      _this.tableData=resp.data;//把从数据库中获取的数据给表格
-                  })*/
-
                 var _this = this;
                 axios({
                     method: "post",
                     url: "'/Manager/selectAll'?currentPage=" + this.currentPage + "&pageSize=" + this.pageSize,
-                    data: this.manager
+                    data: this.brand
                 }).then(function (resp) {
                     //设置表格数据
                     _this.tableData = resp.data.rows;//把从数据库中获取的数据给表格
                     _this.totalCount = resp.data.totalCount; //总条目数
                 })
             },
-
 
             tableRowClassName({row, rowIndex}) {
                 if (rowIndex === 1) {
@@ -252,10 +143,10 @@
                 }
 
                 var _this = this;
-                //2.发送ajax请求
+                //2.发送ajax请求,添加数据
                 axios({
                     method: "post",
-                    url: "http://localhost/brand_case_war/brand/deleteByIds",
+                    url: "http://localhost/brand_case_war/brand/deleteByIds",//路径
                     data: _this.selectIds
                 }).then(function (resp) {
                     if (resp.data = "success") {
@@ -282,6 +173,7 @@
                 this.selectAll();
 
             },
+
             // 添加数据
             addBrand() {
                 var _this = this;
@@ -289,19 +181,16 @@
                 //发送请求ajax异步请求，添加数据
                 axios({
                     method: "post",
-                    url: "http://localhost/brand_case_war/brand/add",
+                    url: "http://localhost/brand_case_war/brand/add",  //接口
                     /*10.0.202.158*/
                     data: _this.manager
                 }).then(function (resp) {
                     if (resp.data == "success") {
                         //添加成功
-
                         //关闭窗口
                         _this.dialogVisible = false
-
                         //重新查询数据
                         _this.selectAll();
-
                         //弹出消息提示
                         _this.$message({
                             message: '恭喜你，添加成功！',
@@ -343,7 +232,6 @@
 
                 // 品牌模型数据
                 brand: {
-                    status: '',
                     brandName: '',
                     companyName: '',
                     id: "",
@@ -360,45 +248,35 @@
                 // 表格数据
                 tableData: [{
                     managerName: 'songci',
-                    managerAccout: '03',
                     managerPassword: '100165',
-                    status: "启用"
+
                 }, {
                     managerName: 'hmg',
-                    managerAccout: '03',
                     managerPassword: '1025610',
-                    status: "启用"
+
                 }, {
                     managerName: 'wangdandan',
-                    managerAccout: '03',
                     managerPassword: '100156',
-                    status: "启用"
+
                 }, {
                     managerName: 'zhaixuanhao',
-                    managerAccout: '03',
-                    managerPassword: '14655000',
-                    status: "启用"
+                    managerPassword: '14650',
+
                 }, {
                     managerName: 'wanglei',
-                    managerAccout: '03',
                     managerPassword: '14560',
-                    status: "启用"
+
                 }, {
                     managerName: 'zhangli',
-                    managerAccout: '03',
                     managerPassword: '10260',
-                    status: "启用"
+
                 },
                     {
                         managerName: 'tiger',
-                        managerAccout: '03',
                         managerPassword: '100',
-                        status: "启用"
                     }, {
                         brandName: '华为',
-                        companyName: '华为科技有限公司',
                         ordered: '100',
-                        status: "启用"
                     }]
             }
         }
