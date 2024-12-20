@@ -95,11 +95,8 @@
                 let username = this.username;
                 let password = this.password;
                 let dis = this.dis;
-                if (dis === true) {
-                    num = 1
-                } else {
-                    num = 0
-                }
+                if (dis === true) num = 1
+                else num = 0
                 // 发起一个post请求
                 axios({
                     method: 'post',
@@ -112,11 +109,8 @@
                 }).then(function (resp) {
                     dataIdentity = (resp.data);
                     localStorage.setItem('identityKey', dataIdentity);
-                    if (resp.data === "1" || resp.data === "2") {
-                        window.location.href = 'http://localhost:8080/vr_preview/iframe.html';
-                    } else {
-                        alert('密码或者账号错误，请重新输入！！！')
-                    }
+                    if (resp.data === "1" || resp.data === "2") window.location.href = 'http://localhost:8080/vr_preview/iframe.html';
+                    else alert('密码或者账号错误，请重新输入！！！')
                 });
             }
         }
