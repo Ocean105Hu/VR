@@ -9,9 +9,9 @@
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </head>
-<body >
+<body>
 <div class="register" id="app">
-        <img src="assets/img/gd.jpg" alt="register image" class="register__img">
+    <img src="assets/img/gd.jpg" alt="register image" class="register__img">
 
     <form action="" class="register__form">
         <h1 class="register__title">账号注册</h1>
@@ -39,7 +39,8 @@
                 <i class="ri-lock-2-line register__icon"></i>
 
                 <div class="register__box-input" @click="focus()">
-                    <input v-model="password" type="password" required class="register__input" id="register-pass" placeholder=" ">
+                    <input v-model="password" type="password" required class="register__input" id="register-pass"
+                           placeholder=" ">
                     <label for="register-pass" class="register__label">密码</label>
                     <i class="ri-eye-off-line register__eye"></i>
                 </div>
@@ -49,7 +50,8 @@
                 <i class="ri-lock-2-line register__icon"></i>
 
                 <div class="register__box-input" @click="focus()">
-                    <input v-model="NextPassword" type="password" required class="register__input" id="r-pass" placeholder=" ">
+                    <input v-model="NextPassword" type="password" required class="register__input" id="r-pass"
+                           placeholder=" ">
                     <label for="r-pass" class="register__label">密码确认</label>
                     <i class="ri-eye-off-line register__eye"></i>
                 </div>
@@ -97,7 +99,7 @@
                             password: password
                         }
                     }).then(function (resp) {
-                        if(resp.data=="1"){
+                        if (resp.data == "1") {
                             window.location.href = "http://localhost:8080/UserModule/Login.html"
                         }
                     });
