@@ -71,7 +71,8 @@ public class UsersServlet extends BaseServlet {
             }
             //用户登录
             write.write("2");
-            write.write(users.getUserId());
+            String id = String.valueOf(users.getUserId());
+            write.write(id);
         } else write.write("0");
         //登录失败
 

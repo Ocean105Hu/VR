@@ -111,7 +111,7 @@
                     }
                 }).then(function (resp) {
                     localStorage.setItem('identityKey', resp.data);
-                    if (resp.data[0] == "1" || resp.data[0] == "2") {
+                    if (resp.data == "1" || resp.data == "2") {
                         window.location.href = 'http://localhost:8086/vr_preview/iframe.html';
                     } else {
                         alert('密码或者账号错误，请重新输入！！！')
