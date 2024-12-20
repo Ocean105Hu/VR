@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.lanqiao.mapper.ManagerMapper">
+    <resultMap id="managerResultMap" type="manager">
+        <result property="managerId" column="manager_id" />
+        <result property="managerName" column="manager_name" />
+        <result property="managerAccount" column="manager_account" />
+        <result property="managerPassword" column="manager_password" />
+    </resultMap>
+
+    <!-- <resultMap id="managerResultMap" type="manager">
+         <result property="managerId" column="user_id" />
+         <result property="managerName" column="user_name" />
+         <result property="managerAccout" column="user_realname" />
+         <result property="managerPassword" column="user_pass" />
+     </resultMap>-->
+
+    <!--查询全部-->
+    <select id="selectAll" resultMap="managerResultMap">
+        select * from manager
+    </select>
+    <!--    <select id="selectAll" resultMap="managerResultMap">
+            select * from users
+        </select>-->
+
+
+    <!--添加-->
+    <!--   <insert id="addManager" useGeneratedKeys="true" keyProperty="managerId">
+           insert into manager values (#{null},#{managerName},#{managerAccout},#{managerPassword});
+       </insert>-->
+
+    <!--批量删除-->
+    <delete id="deteleManagerByIds">
+        delete from manager where id in
+        <foreach collection="ids" item="id" separator="," open="(" close=")">
+            #{id}
+        </foreach>
+    </delete>
+
+    <!--删除-->
+    <delete id="deteleManagerById" >
+        delete from manager where manager_id =#{managerId};
+    </delete>
+
+    <!--查询总条数-->
+    <select id="selectManagerTotalCount" resultMap="managerResultMap">
+        select count(*) from manager;
+    </select>
+
+    <update id="updateManager">
+        update manager set manager_name = #{managerName} where manager_id = #{managerId};
+    </update>
+
+    <select id="selectByPage" resultMap="managerResultMap" >
+        select * from manager limit #{begin} , #{size}
+    </select>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!--    &lt;!&ndash;修改&ndash;&gt;-->
+    <!--    <update id="updateManager">-->
+    <!--        update manager set manager_name = #{managerName} , manager_accout=#{managerAccout} ,manager_password=#{managerPassword}  where manager_id = #{managerId};-->
+    <!--    </update>-->
+
+    <!--
+    <update id="updateManager">
+        update manager set manager_name = #{managerName} , manager_account=#{managerAccout} ,manager_password=#{managerPassword}  where manager_id = #{managerId};
+    </update>
+    -->
+
+
+
+
+
+
+
+
+</mapper>
