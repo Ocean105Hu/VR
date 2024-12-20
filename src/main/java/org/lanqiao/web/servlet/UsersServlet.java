@@ -36,7 +36,7 @@ public class UsersServlet extends BaseServlet {
         String loginCheckLabel = req.getParameter("login__check-label");
         //调用方法
         Users users = usersService.longin(name, pass);
-//        Manager manager = usersService.selectManager(name, pass);
+
         //编码
         resp.setContentType("text/html;charset=utf-8");
         PrintWriter write = resp.getWriter();
