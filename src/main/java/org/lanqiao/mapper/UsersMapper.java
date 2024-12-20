@@ -21,4 +21,6 @@ public interface UsersMapper {
     @Update("update users set user_pass = #{newPass} where user_name = #{userName} ")
     void modifyPass(@Param("userName") String userName,@Param("newPass") String newPass);
 
+
+
 }

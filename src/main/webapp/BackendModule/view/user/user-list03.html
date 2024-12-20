@@ -17,29 +17,29 @@
 
 <body>
 <div id="app">
-<!--    &lt;!&ndash;搜索表单&ndash;&gt;-->
-<!--    <el-form :inline="true" :model="brand" class="demo-form-inline">-->
-<!--        <el-form-item label="当前状态">-->
-<!--            <el-select v-model="brand.status" placeholder="当前状态">-->
-<!--                <el-option label="启用" value="1"></el-option>-->
-<!--                <el-option label="禁用" value="0"></el-option>-->
-<!--            </el-select>-->
-<!--        </el-form-item>-->
+    <!--    &lt;!&ndash;搜索表单&ndash;&gt;-->
+    <!--    <el-form :inline="true" :model="brand" class="demo-form-inline">-->
+    <!--        <el-form-item label="当前状态">-->
+    <!--            <el-select v-model="brand.status" placeholder="当前状态">-->
+    <!--                <el-option label="启用" value="1"></el-option>-->
+    <!--                <el-option label="禁用" value="0"></el-option>-->
+    <!--            </el-select>-->
+    <!--        </el-form-item>-->
 
-<!--        <el-form-item label="名字">-->
-<!--            <el-input v-model="brand.companyName" placeholder="名字"></el-input>-->
-<!--        </el-form-item>-->
+    <!--        <el-form-item label="名字">-->
+    <!--            <el-input v-model="brand.companyName" placeholder="名字"></el-input>-->
+    <!--        </el-form-item>-->
 
-<!--        <el-form-item label="部门">-->
-<!--            <el-input v-model="brand.brandName" placeholder="部门"></el-input>-->
-<!--        </el-form-item>-->
+    <!--        <el-form-item label="部门">-->
+    <!--            <el-input v-model="brand.brandName" placeholder="部门"></el-input>-->
+    <!--        </el-form-item>-->
 
-<!--        <el-form-item>-->
-<!--            <el-button type="primary" @click="onSubmit">查询</el-button>-->
-<!--        </el-form-item>-->
-<!--    </el-form>-->
+    <!--        <el-form-item>-->
+    <!--            <el-button type="primary" @click="onSubmit">查询</el-button>-->
+    <!--        </el-form-item>-->
+    <!--    </el-form>-->
 
-<!--    &lt;!&ndash;按钮&ndash;&gt;-->
+    <!--    &lt;!&ndash;按钮&ndash;&gt;-->
 
     <el-row>
         <!--        <el-button type="danger" plain @click="deleteByIds" >批量删除</el-button>-->
@@ -51,25 +51,24 @@
             :visible.sync="dialogVisible"
             width="20%"
     >
-        <el-form ref="form" :model="brand" label-width="80px">
-            <el-form-item label="姓名">
-                <el-input v-model="brand.brandName"></el-input>
+        <el-form ref="form" :model="user" label-width="80px">
+
+            <el-form-item label="ID">
+                <el-input v-model="user.ID"></el-input>
             </el-form-item>
 
-            <el-form-item label="部门">
-                <el-input v-model="brand.companyName"></el-input>
+            <el-form-item label="姓名">
+                <el-input v-model="user.userName"></el-input>
             </el-form-item>
 
             <el-form-item label="密码">
-                <el-input v-model="brand.ordered"></el-input>
+                <el-input v-model="user.userPassword"></el-input>
             </el-form-item>
 
-            <el-form-item label="状态">
-                <el-switch v-model="brand.status"
-                           active-value="1"
-                           inactive-value="0"
-                ></el-switch>
+            <el-form-item label="真实姓名">
+                <el-input v-model="user.realname"></el-input>
             </el-form-item>
+
 
             <el-form-item>
                 <el-button type="primary" @click="addBrand">提交</el-button>
@@ -98,21 +97,32 @@
                     width="55">
             </el-table-column>
 
+
             <el-table-column
-                    prop="managerName"
+                    prop="ID"
+                    label="ID"
+                    align="center"
+            >
+            </el-table-column>
+
+            <el-table-column
+                    prop="userName"
                     label="姓名"
                     align="center"
             >
             </el-table-column>
+
             <el-table-column
-                    prop="managerAccout"
-                    label="部门"
+                    prop="userPassword"
+                    label="密码"
                     align="center"
             >
             </el-table-column>
+
+
             <el-table-column
-                    prop="managerPassword"
-                    label="密码"
+                    prop="realName"
+                    label="真实姓名"
                     align="center"
             >
             </el-table-column>
@@ -309,13 +319,11 @@
                 dialogVisible: false,
 
                 // 品牌模型数据
-                brand: {
-                    status: '',
-                    brandName: '',
-                    companyName: '',
-                    id: "",
-                    ordered: "",
-                    description: ""
+                user: {
+                    ID: '',
+                    userName: '',
+                    userPassword: '',
+                    realName: ''
                 },
 
                 //被选中的ids
@@ -326,47 +334,54 @@
                 multipleSelection: [],
                 // 表格数据
                 tableData: [{
-                    managerName: 'songci',
-                    managerAccout: '03',
-                    managerPassword: '100165',
-                    status: "启用"
+                    ID: '202410201',
+                    userName: '忆往昔',
+                    userPassword: '0000001',
+                    realName:"宋杰"
+
                 }, {
-                    managerName: 'hmg',
-                    managerAccout: '03',
-                    managerPassword: '1025610',
-                    status: "启用"
+                    ID: '202410202',
+                    userName: '哈密瓜',
+                    userPassword: '0000001',
+                    realName:"唐泽成"
+
                 }, {
-                    managerName: 'wangdandan',
-                    managerAccout: '03',
-                    managerPassword: '100156',
-                    status: "启用"
+                    ID: '202410203',
+                    userName: '10虎',
+                    userPassword: '0000001',
+                    realName:"姚林虎"
+
                 }, {
-                    managerName: 'zhaixuanhao',
-                    managerAccout: '03',
-                    managerPassword: '14655000',
-                    status: "启用"
+                    ID: '202410204',
+                    userName: 'zxh',
+                    userPassword: '0000001',
+                    realName:"翟炫浩"
+
                 }, {
-                    managerName: 'wanglei',
-                    managerAccout: '03',
-                    managerPassword: '14560',
-                    status: "启用"
+                    ID: '202410205',
+                    userName: 'man',
+                    userPassword: '0000001',
+                    realName:"周亚鹏"
+
                 }, {
-                    managerName: 'zhangli',
-                    managerAccout: '03',
-                    managerPassword: '10260',
-                    status: "启用"
-                },
-                    {
-                        managerName: 'tiger',
-                        managerAccout: '03',
-                        managerPassword: '100',
-                        status: "启用"
-                    }, {
-                        brandName: '华为',
-                        companyName: '华为科技有限公司',
-                        ordered: '100',
-                        status: "启用"
-                    }]
+                    ID: '202410206',
+                    userName: 'hyq',
+                    userPassword: '0000001',
+                    realName:"何禹桥"
+
+                }, {
+                    ID: '202410207',
+                    userName: '王dangdang',
+                    userPassword: '0000001',
+                    realName:"王丹丹"
+
+                }, {
+                    ID: '202410208',
+                    userName: '丽丽',
+                    userPassword: '0000001',
+                    realName:"张丽"
+
+                }]
             }
         }
     })
