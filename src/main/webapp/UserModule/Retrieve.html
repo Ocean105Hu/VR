@@ -33,7 +33,7 @@
                 <div class="retrieve__box-input">
                     <input v-model="username" required class="retrieve__input" id="retrieve-pass" placeholder=" ">
                     <label for="retrieve-pass" class="retrieve__label">用户账号</label>
-                    <i class="ri-eye-off-line retrieve__eye" ></i>
+                    <i class="ri-eye-off-line retrieve__eye"></i>
                 </div>
             </div>
         </div>
@@ -43,9 +43,10 @@
                 <i class="ri-lock-2-line retrieve__icon"></i>
 
                 <div class="retrieve__box-input" @click="focus()">
-                    <input v-model="password" type="password" required class="retrieve__input" id="r-pass" placeholder=" ">
+                    <input v-model="password" type="password" required class="retrieve__input" id="r-pass"
+                           placeholder=" ">
                     <label for="r-pass" class="retrieve__label">Password</label>
-                    <i class="ri-eye-off-line retrieve__eye" ></i>
+                    <i class="ri-eye-off-line retrieve__eye"></i>
                 </div>
             </div>
 
@@ -53,9 +54,10 @@
                 <i class="ri-lock-2-line retrieve__icon"></i>
 
                 <div class="retrieve__box-input" @click="focus()">
-                    <input v-model="NextPassword" type="password" required class="retrieve__input" id="re-pass" placeholder=" ">
+                    <input v-model="NextPassword" type="password" required class="retrieve__input" id="re-pass"
+                           placeholder=" ">
                     <label for="re-pass" class="retrieve__label">Next Password</label>
-                    <i class="ri-eye-off-line retrieve__eye" ></i>
+                    <i class="ri-eye-off-line retrieve__eye"></i>
                 </div>
             </div>
         </div>
@@ -65,8 +67,8 @@
 
         <button type="button" class="retrieve__button" @click="retrieve()" ref="Verify" style="display: block">验证
         </button>
-<!--        <button type="button" class="retrieve__button" @click="revise()" ref="Confirm" style="display: none">Confirm-->
-<!--        </button>-->
+        <!--        <button type="button" class="retrieve__button" @click="revise()" ref="Confirm" style="display: none">Confirm-->
+        <!--        </button>-->
 
         <p class="retrieve__retrieve">
             <a href="Login.html">Come to think of it</a>
@@ -105,7 +107,7 @@
                         username: username,
                     }
                 }).then(function (resp) {
-                    if(resp.data=="1"){
+                    if (resp.data == "1") {
                         EnterVerify.style.display = 'none';
                         EnterPass.style.display = 'grid';
                         Verify.style.display = 'none';
@@ -113,7 +115,7 @@
                     }
                 });
             },
-            revise(){
+            revise() {
                 let realname = this.realname;
                 let username = this.username;
                 let password = this.password;
@@ -128,12 +130,12 @@
                             username: username,
                         }
                     }).then(function (resp) {
-                        if(resp.data){
+                        if (resp.data) {
                             window.location.href = "http://localhost:8080/UserModule/Login.html"
                         }
                     });
-                }else {
-                    this.$refs.registerCheck.style.display='block'
+                } else {
+                    this.$refs.registerCheck.style.display = 'block'
                 }
             }
         }
