@@ -95,8 +95,13 @@ public class UsersServiceImpl implements UsersService {
         SqlSessionFactory factory = SqlSessionFactoryUtil.getSqlSessionFactory();
         SqlSession sqlSession = factory.openSession();
         UsersMapper usersMapper = sqlSession.getMapper(UsersMapper.class);
+        usersMapper.deteleUser(userId);
         sqlSession.commit();
         sqlSession.close();
+
+
+
+
     }
 
     @Override

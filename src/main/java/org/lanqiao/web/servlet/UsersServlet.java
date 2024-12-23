@@ -37,7 +37,7 @@ public class UsersServlet extends BaseServlet {
         BufferedReader br = req.getReader();
         String params = br.readLine();//json字符串
         System.out.println(params);
-        //2.转为Brand对象
+        //2.转为User对象
         Users user = JSON.parseObject(params, Users.class);
         System.out.println(user);
         //3.调用service
