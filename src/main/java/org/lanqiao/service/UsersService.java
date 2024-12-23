@@ -20,4 +20,10 @@ public interface UsersService {
      */
     List<Users> selectAll();
 
+    void addUser(Users user);
+
+    void updateUser(Users user);
+
+    void deteleUserById(Integer userId);
+
 }

@@ -1,0 +1,147 @@
+body {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #f4f7fc;
+    color: #333;
+}
+
+h2 {
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+button {
+    font-size: 14px;
+    padding: 8px 16px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    background-color: #5e6c77;
+    color: #fff;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #4a5763;
+}
+
+table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #f1f1f1;
+    color: #555;
+}
+
+tr:hover {
+    background-color: #fafafa;
+}
+
+td button {
+    font-size: 12px;
+    padding: 6px 12px;
+    border-radius: 3px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+td button.edit {
+    background-color: #67b8e5;
+    color: white;
+}
+
+td button.edit:hover {
+    background-color: #4a99bb;
+}
+
+td button.delete {
+    background-color: #e74c3c;
+    color: white;
+}
+
+td button.delete:hover {
+    background-color: #c0392b;
+}
+
+.form-popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.3);
+    justify-content: center;
+    align-items: center;
+}
+
+.form-container {
+    background-color: white;
+    padding: 30px;
+    border-radius: 8px;
+    width: 400px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-container h3 {
+    margin-bottom: 20px;
+    font-size: 20px;
+    color: #333;
+}
+
+.form-container label {
+    margin-bottom: 8px;
+    display: block;
+    color: #555;
+}
+
+.form-container input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    transition: border-color 0.3s;
+}
+
+.form-container input:focus {
+    border-color: #5e6c77;
+    outline: none;
+}
+
+.form-container button[type="submit"] {
+    background-color: #5e6c77;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    width: 100%;
+    cursor: pointer;
+}
+
+.form-container button[type="submit"]:hover {
+    background-color: #4a5763;
+}
+
+.form-container .cancel-btn {
+    background-color: #ccc;
+    color: #333;
+    margin-top: 10px;
+}
+
+.form-container .cancel-btn:hover {
+    background-color: #aaa;
+}

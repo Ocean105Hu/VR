@@ -2,6 +2,7 @@ package org.lanqiao.web.servlet;
 
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson2.JSONObject;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -12,6 +13,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 
 
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -28,6 +30,69 @@ public class UsersServlet extends BaseServlet {
         resp.setContentType("text/json;charset=utf-8");
         resp.getWriter().write(jsonString);
     }
+
+
+    public void addUser(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        //1.接受数据
+        BufferedReader br = req.getReader();
+        String params = br.readLine();//json字符串
+        System.out.println(params);
+        //2.转为Brand对象
+        Users user = JSON.parseObject(params, Users.class);
+        System.out.println(user);
+        //3.调用service
+        usersService.addUser(user);
+        //响应成功的标识
+        resp.getWriter().write("success");
+    }
+
+    public void deteleByUserId(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String line = req.getReader().readLine().replaceAll("[^0-9]", "");
+        System.out.println(line);
+        Integer userId = Integer.valueOf(line);
+        //调用service
+        usersService.deteleUserById(userId);
+        resp.getWriter().write("success");
+    }
+
+    /**
+     * 修改用户数据
+     * @param req
+     * @param resp
+     * @throws ServletException
+     * @throws IOException
+     */
+    public void updateUser(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String str = req.getReader().readLine();
+        System.out.println(str);
+        Users user = JSONObject.parseObject(str, Users.class);
+
+//        int id = (Integer) hashMap.get("userId");
+        usersService.updateUser(user);
+        resp.getWriter().write("success");
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     //--------------------------------
 
