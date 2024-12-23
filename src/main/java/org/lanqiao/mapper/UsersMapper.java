@@ -44,7 +44,7 @@ public interface UsersMapper {
 
     @Select("delete from users where user_id=#{userId}")
     @ResultMap("usersResultMap")
-    void deteleUser(Integer id);
+    void deteleUser(Integer userId);
 
     //--------------------------
 

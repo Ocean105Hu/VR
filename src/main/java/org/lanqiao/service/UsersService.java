@@ -24,6 +24,6 @@ public interface UsersService {
 
     void updateUser(Users user);
 
-    void deteleUserById(Integer id);
+    void deteleUserById(Integer userId);
 
 }
