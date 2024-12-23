@@ -3,6 +3,7 @@ package org.lanqiao.mapper;
 import org.apache.ibatis.annotations.*;
 import org.lanqiao.pojo.Users;
 
+import java.util.List;
 
 
 public interface UsersMapper {
@@ -20,6 +21,11 @@ public interface UsersMapper {
     //找回2
     @Update("update users set user_pass = #{newPass} where user_name = #{userName} ")
     void modifyPass(@Param("userName") String userName,@Param("newPass") String newPass);
+
+
+    @Select("Select * from users ")
+    @ResultMap("usersResultMap")
+    List<Users> sellect();
 
 
 

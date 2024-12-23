@@ -1,6 +1,7 @@
 package org.lanqiao.web.servlet;
 
 
+import com.alibaba.fastjson.JSON;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -13,10 +14,23 @@ import jakarta.servlet.annotation.WebServlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 
 @WebServlet("/users/*")
 public class UsersServlet extends BaseServlet {
     private UsersService usersService = new UsersServiceImpl();
+
+    //--------------------------------
+
+    public void selectAll(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        List<Users> users = usersService.selectAll();
+        String jsonString = JSON.toJSONString(users);
+        resp.setContentType("text/json;charset=utf-8");
+        resp.getWriter().write(jsonString);
+    }
+
+    //--------------------------------
+
 
     //登录
     public void longin(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

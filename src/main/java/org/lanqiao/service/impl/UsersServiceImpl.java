@@ -8,6 +8,8 @@ import org.lanqiao.pojo.Users;
 import org.lanqiao.service.UsersService;
 import org.lanqiao.util.SqlSessionFactoryUtil;
 
+import java.util.List;
+
 public class UsersServiceImpl implements UsersService {
     @Override
     //登录
@@ -31,7 +33,7 @@ public class UsersServiceImpl implements UsersService {
         UsersMapper usersMapper = sqlSession.getMapper(UsersMapper.class);
 
         //方法调用
-        usersMapper.register(name,pass,realname);
+        usersMapper.register(name, pass, realname);
         //提交事务
         sqlSession.commit();
         sqlSession.close();
@@ -58,23 +60,23 @@ public class UsersServiceImpl implements UsersService {
         SqlSession sqlSession = sqlSessionFactory.openSession();
         UsersMapper usersMapper = sqlSession.getMapper(UsersMapper.class);
         //方法调用
-        usersMapper.modifyPass(userName,newPass);
+        usersMapper.modifyPass(userName, newPass);
         sqlSession.commit();
         sqlSession.close();
     }
 
-//    @Override
-//    public Manager selectManager(String account, String password) {
-//        //获取对象
-//        System.out.println(account);
-//        SqlSessionFactory sqlSessionFactory = SqlSessionFactoryUtil.getSqlSessionFactory();
-//        System.out.println(1);
-//        SqlSession sqlSession = sqlSessionFactory.openSession();
-//        ManagerMapper managerMapper = sqlSession.getMapper(ManagerMapper.class);
-//        Manager manager = managerMapper.selectManager(account, password);
-//        System.out.println(manager);
-//        sqlSession.close();
-//        return manager;
-//    }
+    @Override
+    public List<Users> selectAll() {
+        SqlSessionFactory factory = SqlSessionFactoryUtil.getSqlSessionFactory();
+        //获取SqlSession对象
+        SqlSession sqlSession = factory.openSession();
+        //获取mapper
+        UsersMapper usersMapper = sqlSession.getMapper(UsersMapper.class);
+        //调用方法
+        List<Users> users = usersMapper.sellect();
+        sqlSession.close();
+        return users;
+    }
+
 
 }
