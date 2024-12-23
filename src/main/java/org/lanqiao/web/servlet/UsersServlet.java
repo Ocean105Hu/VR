@@ -31,7 +31,7 @@ public class UsersServlet extends BaseServlet {
         resp.getWriter().write(jsonString);
     }
 
-    //
+
     public void addUser(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         //1.接受数据
         BufferedReader br = req.getReader();
@@ -55,7 +55,14 @@ public class UsersServlet extends BaseServlet {
         resp.getWriter().write("success");
     }
 
-    public void updateManager(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    /**
+     * 修改用户数据
+     * @param req
+     * @param resp
+     * @throws ServletException
+     * @throws IOException
+     */
+    public void updateUser(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String str = req.getReader().readLine();
         System.out.println(str);
         Users user = JSONObject.parseObject(str, Users.class);
