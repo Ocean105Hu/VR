@@ -276,14 +276,16 @@
 
     // 编辑用户信息
     async function editUser(userId) {
-        const response = await fetch(`/users/deteleByUserId`, {
+        const response = await fetch(`/users/updateUser`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'  // 设置请求头，表示发送 JSON 数据
             },
             body: JSON.stringify({id: userId})  // 请求体中发送 JSON 数据
         });  // 发送请求获取用户信息
+        console.log(response)
         const user = await response.json(); // 解析用户数据
+        console.log(user)
         if (user) {
             // 填充表单中的数据
             document.getElementById('formTitle').textContent = '编辑用户';

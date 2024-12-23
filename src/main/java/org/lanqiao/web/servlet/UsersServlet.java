@@ -81,9 +81,8 @@ public class UsersServlet extends BaseServlet {
         resp.setContentType("application/json");
         resp.setCharacterEncoding("UTF-8");
         PrintWriter out = resp.getWriter();
-        out.print("1");  // 将 JSON 响应发送到前端
+        out.print(resp);  // 将 JSON 响应发送到前端
         out.flush();
-
     }
 
 

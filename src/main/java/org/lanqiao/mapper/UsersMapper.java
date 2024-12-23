@@ -32,7 +32,7 @@ public interface UsersMapper {
     List<Users> sellect();
 
 
-    @Select("insert into users (userName,userPass,userRealname) values (#{user_name},#{user_pass},#{user_realname});")
+    @Select("insert into users (user_name,user_pass,user_realname) values (#{userName},#{userPass},#{userRealname});")
     @ResultMap("usersResultMap")
     void addUser(Users user);
 
