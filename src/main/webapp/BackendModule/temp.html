@@ -188,12 +188,12 @@
         <form id="userForm">
             <!-- 隐藏字段，用于存储用户ID（用于编辑时识别用户） -->
             <input type="hidden" id="userId">
-            <label for="username">用户名:</label>
-            <input type="text" id="username" required placeholder="请输入用户名">
-            <label for="password">密码:</label>
-            <input type="password" id="password" required placeholder="请输入密码">
-            <label for="realName">真实姓名:</label>
-            <input type="text" id="realName" required placeholder="请输入真实姓名">
+            <label for="userName">用户名:</label>
+            <input type="text" id="userName" required placeholder="请输入用户名">
+            <label for="userPass">密码:</label>
+            <input type="userPass" id="userPass" required placeholder="请输入密码">
+            <label for="userRealname">真实姓名:</label>
+            <input type="text" id="userRealname" required placeholder="请输入真实姓名">
             <!-- 保存按钮 -->
             <button type="submit">保存</button>
             <!-- 取消按钮 -->
@@ -213,7 +213,6 @@
 
     // 渲染用户列表
     function renderUserList(users) {
-        console.log(users)
         const userList = document.getElementById('userList');
         userList.innerHTML = ''; // 清空现有的用户列表
 
@@ -225,7 +224,7 @@
                     <td>${user.userId}</td>
                     <td>${user.userName}</td>
                     <td>${user.userPass}</td>
-                    <td>${user.userRealname}</td>
+                    <td>${user.useruserRealname}</td>
                     <td>
                         <button class="edit" onclick="editUser(${user.userId})">编辑</button>
                         <button class="delete" onclick="deleteUser(${user.userId})">删除</button>
@@ -277,15 +276,21 @@
 
     // 编辑用户信息
     async function editUser(userId) {
-        const response = await fetch(`/users/updateUser?action=get&id=${userId}`); // 发送请求获取用户信息
+        const response = await fetch(`/users/deteleByUserId`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'  // 设置请求头，表示发送 JSON 数据
+            },
+            body: JSON.stringify({id: userId})  // 请求体中发送 JSON 数据
+        });  // 发送请求获取用户信息
         const user = await response.json(); // 解析用户数据
         if (user) {
             // 填充表单中的数据
             document.getElementById('formTitle').textContent = '编辑用户';
             document.getElementById('userId').value = user.id;
-            document.getElementById('username').value = user.username;
-            document.getElementById('password').value = user.password;
-            document.getElementById('realName').value = user.realName;
+            document.getElementById('userName').value = user.userName;
+            document.getElementById('userPass').value = user.userPass;
+            document.getElementById('userRealname').value = user.userRealname;
             openPopup(); // 打开表单弹出框
         }
     }
@@ -300,13 +305,8 @@
             body: JSON.stringify({id: userId})  // 请求体中发送 JSON 数据
         }); // 发送删除请求
         const result = await response.json(); // 解析响应结果
-        console.log(result)
-        console.log(result.success)
-        if (result.success) {
-            await getUserList(); // 删除成功后重新加载用户列表
-        } else {
-            alert('删除失败'); // 如果删除失败，弹出提示
-        }
+        if (result == "1") await getUserList(); // 删除成功后重新加载用户列表
+        else alert('删除失败'); // 如果删除失败，弹出提示
     }
 
     // 打开添加用户表单
@@ -332,23 +332,23 @@
         event.preventDefault(); // 阻止表单默认提交行为
 
         const userId = parseInt(document.getElementById('userId').value);
-        const username = document.getElementById('username').value;
-        const password = document.getElementById('password').value;
-        const realName = document.getElementById('realName').value;
+        const userName = document.getElementById('userName').value;
+        const userPass = document.getElementById('userPass').value;
+        const userRealname = document.getElementById('userRealname').value;
 
-        const userData = {username, password, realName}; // 构造用户数据对象
+        const userData = {userName, userPass, userRealname}; // 构造用户数据对象
 
         let response;
         if (userId) {
             // 编辑用户
-            response = await fetch(`/users/updateUser?action=edit&id=${userId}`, {
+            response = await fetch(`/users/updateUser`, {
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify(userData) // 发送修改后的用户数据
             });
         } else {
             // 添加新用户
-            response = await fetch('/users/addUser?action=add', {
+            response = await fetch('/users/addUser', {
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify(userData) // 发送新用户数据
@@ -356,7 +356,7 @@
         }
 
         const result = await response.json(); // 解析响应结果
-        if (result.success) {
+        if (result == "1") {
             getUserList(); // 更新用户列表
             closePopup(); // 关闭表单
         } else {

@@ -98,10 +98,6 @@ public class UsersServiceImpl implements UsersService {
         usersMapper.deteleUser(userId);
         sqlSession.commit();
         sqlSession.close();
-
-
-
-
     }
 
     @Override
@@ -113,6 +109,4 @@ public class UsersServiceImpl implements UsersService {
         sqlSession.commit();
         sqlSession.close();
     }
-
-
 }

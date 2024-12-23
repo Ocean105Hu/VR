@@ -20,7 +20,7 @@ import java.util.List;
 
 @WebServlet("/users/*")
 public class UsersServlet extends BaseServlet {
-    private UsersService usersService = new UsersServiceImpl();
+    private final UsersService usersService = new UsersServiceImpl();
 
     //--------------------------------
 
@@ -43,7 +43,11 @@ public class UsersServlet extends BaseServlet {
         //3.调用service
         usersService.addUser(user);
         //响应成功的标识
-        resp.getWriter().write("success");
+        resp.setContentType("application/json");
+        resp.setCharacterEncoding("UTF-8");
+        PrintWriter out = resp.getWriter();
+        out.print("1");  // 将 JSON 响应发送到前端
+        out.flush();
     }
 
     public void deteleByUserId(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -52,7 +56,12 @@ public class UsersServlet extends BaseServlet {
         Integer userId = Integer.valueOf(line);
         //调用service
         usersService.deteleUserById(userId);
-        resp.getWriter().write("success");
+        resp.setContentType("application/json");
+        resp.setCharacterEncoding("UTF-8");
+        PrintWriter out = resp.getWriter();
+        out.print("1");  // 将 JSON 响应发送到前端
+        out.flush();
+
     }
 
     /**
@@ -69,7 +78,11 @@ public class UsersServlet extends BaseServlet {
 
 //        int id = (Integer) hashMap.get("userId");
         usersService.updateUser(user);
-        resp.getWriter().write("success");
+        resp.setContentType("application/json");
+        resp.setCharacterEncoding("UTF-8");
+        PrintWriter out = resp.getWriter();
+        out.print("1");  // 将 JSON 响应发送到前端
+        out.flush();
 
     }
 
