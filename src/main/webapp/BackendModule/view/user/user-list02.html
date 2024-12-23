@@ -31,19 +31,19 @@
         <el-form ref="form" :model="user" label-width="80px">
 
             <el-form-item label="ID">
-                <el-input v-model="user.ID"></el-input>
+                <el-input v-model="users.userId"></el-input>
             </el-form-item>
 
             <el-form-item label="姓名">
-                <el-input v-model="user.userName"></el-input>
+                <el-input v-model="users.userName"></el-input>
             </el-form-item>
 
             <el-form-item label="密码">
-                <el-input v-model="user.userPassword"></el-input>
+                <el-input v-model="users.userPass"></el-input>
             </el-form-item>
 
             <el-form-item label="真实姓名">
-                <el-input v-model="user.realname"></el-input>
+                <el-input v-model="users.userRealname"></el-input>
             </el-form-item>
 
 
@@ -76,7 +76,7 @@
 
 
             <el-table-column
-                    prop="ID"
+                    prop="userId"
                     label="ID"
                     align="center"
             >
@@ -90,7 +90,7 @@
             </el-table-column>
 
             <el-table-column
-                    prop="userPassword"
+                    prop="userPass"
                     label="密码"
                     align="center"
             >
@@ -98,7 +98,7 @@
 
 
             <el-table-column
-                    prop="realName"
+                    prop="userRealname"
                     label="真实姓名"
                     align="center"
             >
@@ -118,16 +118,7 @@
     </template>
 
 
-    <!--分页工具条-->
-    <el-pagination
-            @size-change="handleSizeChange"
-            @current-change="handleCurrentChange"
-            :current-page="currentPage"
-            :page-sizes="[5, 10, 15, 20]"
-            :page-size="5"
-            layout="total, sizes, prev, pager, next, jumper"
-            :total="totalCount">
-    </el-pagination>
+
 
 
 </div>
@@ -144,7 +135,7 @@
         el: "#app",
         data() {
             return {
-                users: []
+                user: []
             }
         },
         mounted() {
@@ -152,7 +143,7 @@
             var _this = this;
             axios({
                 method: "get",
-                url: "users/selectAll"
+                url: "http://localhost:8080/VR_war/users/selectAll"
             }).then(function (resp) {
                 _this.tableData = resp.data;//把从数据库中获取的数据给表格
             })
@@ -300,11 +291,12 @@
                 dialogVisible: false,
 
                 // 品牌模型数据
-                user: {
-                    ID: 'users.ID',
-                    userName: 'users.userName',
-                    userPassword: 'users.userPass',
-                    realName: 'users.userRealname'
+                users: {
+                    userId: '',
+                    userName: '',
+                    userPass: '',
+                    userRealname: ''
+
                 },
 
                 //被选中的ids
@@ -314,55 +306,14 @@
                 // 复选框选中数据集合
                 multipleSelection: [],
                 // 表格数据
-                // tableData: [{
-                //     ID: '202410201',
-                //     userName: '忆往昔',
-                //     userPassword: '0000001',
-                //     realName:"宋杰"
-                //
-                // }, {
-                //     ID: '202410202',
-                //     userName: '哈密瓜',
-                //     userPassword: '0000001',
-                //     realName:"唐泽成"
-                //
-                // }, {
-                //     ID: '202410203',
-                //     userName: '10虎',
-                //     userPassword: '0000001',
-                //     realName:"姚林虎"
-                //
-                // }, {
-                //     ID: '202410204',
-                //     userName: 'zxh',
-                //     userPassword: '0000001',
-                //     realName:"翟炫浩"
-                //
-                // }, {
-                //     ID: '202410205',
-                //     userName: 'man',
-                //     userPassword: '0000001',
-                //     realName:"周亚鹏"
-                //
-                // }, {
-                //     ID: '202410206',
-                //     userName: 'hyq',
-                //     userPassword: '0000001',
-                //     realName:"何禹桥"
-                //
-                // }, {
-                //     ID: '202410207',
-                //     userName: '王dangdang',
-                //     userPassword: '0000001',
-                //     realName:"王丹丹"
-                //
-                // }, {
-                //     ID: '202410208',
-                //     userName: '丽丽',
-                //     userPassword: '0000001',
-                //     realName:"张丽0000"
-                //
-                // }]
+                tableData: [{
+                    ID: '',
+                    userName: '',
+                    userPassword: '',
+                    realName:''
+
+                }]
+
             }
         }
     })
