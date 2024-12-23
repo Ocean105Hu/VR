@@ -175,9 +175,7 @@
         <th>操作</th>
     </tr>
     </thead>
-    <tbody id="userList">
-    <!-- 用户数据将通过JavaScript动态加载 -->
-    </tbody>
+    <tbody id="userList"></tbody>
 </table>
 
 <!-- 批量删除按钮 -->
@@ -205,18 +203,17 @@
 </div>
 
 
-
-
 <script>
-    // 模拟的用户数据
-    let users = [
-        {id: 1, username: 'user1', password: 'password1', realName: '张三'},
-        {id: 2, username: 'user2', password: 'password2', realName: '李四'},
-        {id: 3, username: 'user3', password: 'password3', realName: '王五'}
-    ];
+    // 获取用户列表
+    async function getUserList() {
+        const response = await fetch('/users/selectAll?action=get'); // 发送GET请求获取用户数据
+        const users = await response.json(); // 解析JSON格式的响应数据
+        renderUserList(users); // 渲染用户列表
+    }
 
     // 渲染用户列表
-    function renderUserList() {
+    function renderUserList(users) {
+        console.log(users)
         const userList = document.getElementById('userList');
         userList.innerHTML = ''; // 清空现有的用户列表
 
@@ -224,17 +221,17 @@
         users.forEach(user => {
             const row = document.createElement('tr');
             row.innerHTML = `
-                    <td><input type="checkbox" class="userCheckbox" data-id="${user.id}"></td>
-                    <td>${user.id}</td>
-                    <td>${user.username}</td>
-                    <td>${user.password}</td>
-                    <td>${user.realName}</td>
+                    <td><input type="checkbox" class="userCheckbox" data-id="${user.userId}"></td>
+                    <td>${user.userId}</td>
+                    <td>${user.userName}</td>
+                    <td>${user.userPass}</td>
+                    <td>${user.userRealname}</td>
                     <td>
-                        <button class="edit" onclick="editUser(${user.id})">编辑</button>
-                        <button class="delete" onclick="deleteUser(${user.id})">删除</button>
+                        <button class="edit" onclick="editUser(${user.userId})">编辑</button>
+                        <button class="delete" onclick="deleteUser(${user.userId})">删除</button>
                     </td>
                 `;
-            userList.appendChild(row);
+            userList.appendChild(row); // 将生成的行添加到表格中
         });
     }
 
@@ -243,12 +240,12 @@
         const selectAllCheckbox = document.getElementById('selectAll');
         const checkboxes = document.querySelectorAll('.userCheckbox');
         checkboxes.forEach(checkbox => {
-            checkbox.checked = selectAllCheckbox.checked;
+            checkbox.checked = selectAllCheckbox.checked; // 根据全选框状态更新其他复选框
         });
     }
 
     // 批量删除选中的用户
-    function bulkDelete() {
+    async function bulkDelete() {
         const selectedUserIds = [];
         const checkboxes = document.querySelectorAll('.userCheckbox:checked');
 
@@ -263,15 +260,27 @@
             return;
         }
 
-        // 删除选中的用户
-        users = users.filter(user => !selectedUserIds.includes(user.id));
-        renderUserList(); // 重新渲染用户列表
+        // 发送批量删除请求到后端
+        const response = await fetch('/user-servlet?action=bulkDelete', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({ids: selectedUserIds}) // 发送选中用户的ID数组
+        });
+
+        const result = await response.json(); // 解析响应结果
+        if (result.success) {
+            getUserList(); // 重新获取用户列表
+        } else {
+            alert('批量删除失败'); // 如果删除失败，弹出提示
+        }
     }
 
     // 编辑用户信息
-    function editUser(userId) {
-        const user = users.find(u => u.id === userId);
+    async function editUser(userId) {
+        const response = await fetch(`/users/updateUser?action=get&id=${userId}`); // 发送请求获取用户信息
+        const user = await response.json(); // 解析用户数据
         if (user) {
+            // 填充表单中的数据
             document.getElementById('formTitle').textContent = '编辑用户';
             document.getElementById('userId').value = user.id;
             document.getElementById('username').value = user.username;
@@ -282,16 +291,29 @@
     }
 
     // 删除单个用户
-    function deleteUser(userId) {
-        users = users.filter(user => user.id !== userId);
-        renderUserList(); // 重新渲染用户列表
+    async function deleteUser(userId) {
+        const response = await fetch(`/users/deteleByUserId`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'  // 设置请求头，表示发送 JSON 数据
+            },
+            body: JSON.stringify({id: userId})  // 请求体中发送 JSON 数据
+        }); // 发送删除请求
+        const result = await response.json(); // 解析响应结果
+        console.log(result)
+        console.log(result.success)
+        if (result.success) {
+            await getUserList(); // 删除成功后重新加载用户列表
+        } else {
+            alert('删除失败'); // 如果删除失败，弹出提示
+        }
     }
 
     // 打开添加用户表单
     function openAddUserPopup() {
         document.getElementById('formTitle').textContent = '添加用户';
         document.getElementById('userForm').reset(); // 重置表单
-        document.getElementById('userId').value = ''; // 清空用户ID
+        document.getElementById('userId').value = ''; // 清空用户ID字段
         openPopup(); // 打开表单弹出框
     }
 
@@ -305,41 +327,45 @@
         document.getElementById('userFormPopup').style.display = 'none';
     }
 
-    // 表单提交事件
-    document.getElementById('userForm').addEventListener('submit', function (event) {
-        event.preventDefault(); // 防止表单默认提交行为
+    // 表单提交处理
+    document.getElementById('userForm').addEventListener('submit', async function (event) {
+        event.preventDefault(); // 阻止表单默认提交行为
 
-        // 获取表单中的数据
         const userId = parseInt(document.getElementById('userId').value);
         const username = document.getElementById('username').value;
         const password = document.getElementById('password').value;
         const realName = document.getElementById('realName').value;
 
+        const userData = {username, password, realName}; // 构造用户数据对象
+
+        let response;
         if (userId) {
             // 编辑用户
-            const user = users.find(u => u.id === userId);
-            if (user) {
-                user.username = username;
-                user.password = password;
-                user.realName = realName;
-            }
+            response = await fetch(`/users/updateUser?action=edit&id=${userId}`, {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify(userData) // 发送修改后的用户数据
+            });
         } else {
             // 添加新用户
-            const newUser = {
-                id: users.length + 1, // 新用户ID自动递增
-                username: username,
-                password: password,
-                realName: realName
-            };
-            users.push(newUser); // 将新用户添加到用户列表
+            response = await fetch('/users/addUser?action=add', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify(userData) // 发送新用户数据
+            });
         }
 
-        renderUserList(); // 重新渲染用户列表
-        closePopup(); // 关闭表单弹出框
+        const result = await response.json(); // 解析响应结果
+        if (result.success) {
+            getUserList(); // 更新用户列表
+            closePopup(); // 关闭表单
+        } else {
+            alert('操作失败'); // 操作失败时提示用户
+        }
     });
 
-    // 初始渲染用户列表
-    renderUserList();
+    // 初始加载用户列表
+    getUserList();
 </script>
 </body>
 </html>
