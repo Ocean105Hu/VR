@@ -33,19 +33,19 @@ public class UsersServlet extends BaseServlet {
 
 
     public void selectById(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
         String line = req.getReader().readLine().replaceAll("[^0-9]", "");
         System.out.println(line);
         Integer userId = Integer.valueOf(line);
         //调用service
-        usersService.selectById(userId);
+        List<Users> users = usersService.selectById(userId);
+        System.out.println(users);
+        String jsonString = JSON.toJSONString(users);
+        System.out.println(jsonString);
         resp.setContentType("application/json");
         resp.setCharacterEncoding("UTF-8");
         PrintWriter out = resp.getWriter();
-        out.print("1");  // 将 JSON 响应发送到前端
+        out.print(jsonString);  // 将 JSON 响应发送到前端
         out.flush();
-
-
     }
 
 
@@ -92,9 +92,9 @@ public class UsersServlet extends BaseServlet {
         String str = req.getReader().readLine();
         System.out.println(str);
         Users user = JSONObject.parseObject(str, Users.class);
-
 //        int id = (Integer) hashMap.get("userId");
         usersService.updateUser(user);
+
         resp.setContentType("application/json");
         resp.setCharacterEncoding("UTF-8");
         PrintWriter out = resp.getWriter();
