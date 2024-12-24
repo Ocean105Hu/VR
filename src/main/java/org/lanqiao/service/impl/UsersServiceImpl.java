@@ -1,7 +1,6 @@
 package org.lanqiao.service.impl;
 
 
-import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.lanqiao.mapper.UsersMapper;
@@ -100,6 +99,7 @@ public class UsersServiceImpl implements UsersService {
         sqlSession.close();
     }
 
+
     @Override
     public void updateUser(Users user) {
         SqlSessionFactory factory = SqlSessionFactoryUtil.getSqlSessionFactory();
@@ -109,4 +109,18 @@ public class UsersServiceImpl implements UsersService {
         sqlSession.commit();
         sqlSession.close();
     }
+
+
+    @Override
+    public List<Users> selectById(Integer userId) {
+        SqlSessionFactory factory = SqlSessionFactoryUtil.getSqlSessionFactory();
+        SqlSession sqlSession = factory.openSession();
+        UsersMapper userMapper = sqlSession.getMapper(UsersMapper.class);
+        List<Users> user = userMapper.selectUserById(userId);
+        sqlSession.commit();
+        sqlSession.close();
+        return user;
+    }
+
+
 }

@@ -27,6 +27,17 @@ public interface UsersMapper {
 
 
     //------------------------------------
+
+
+    @Select("Select * from users where user_id=#{userId}")
+    @ResultMap("usersResultMap")
+    List<Users> selectUserById(Integer userId);
+
+    @Select("delete from users where user_id=#{userId}")
+    @ResultMap("usersResultMap")
+    void deteleUser(Integer userId);
+
+
     @Select("Select * from users ")
     @ResultMap("usersResultMap")
     List<Users> sellect();
@@ -42,9 +53,8 @@ public interface UsersMapper {
     void updateUser(Users user);
 
 
-    @Select("delete from users where user_id=#{userId}")
-    @ResultMap("usersResultMap")
-    void deteleUser(Integer userId);
+
+
 
     //--------------------------
 

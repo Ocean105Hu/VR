@@ -32,6 +32,23 @@ public class UsersServlet extends BaseServlet {
     }
 
 
+    public void selectById(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+        String line = req.getReader().readLine().replaceAll("[^0-9]", "");
+        System.out.println(line);
+        Integer userId = Integer.valueOf(line);
+        //调用service
+        usersService.selectById(userId);
+        resp.setContentType("application/json");
+        resp.setCharacterEncoding("UTF-8");
+        PrintWriter out = resp.getWriter();
+        out.print("1");  // 将 JSON 响应发送到前端
+        out.flush();
+
+
+    }
+
+
     public void addUser(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         //1.接受数据
         BufferedReader br = req.getReader();

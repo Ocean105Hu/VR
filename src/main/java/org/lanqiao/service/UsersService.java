@@ -26,4 +26,7 @@ public interface UsersService {
 
     void deteleUserById(Integer userId);
 
+
+    List<Users>selectById(Integer userId);
+
 }
