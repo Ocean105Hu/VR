@@ -48,7 +48,7 @@ public interface UsersMapper {
     void addUser(Users user);
 
 
-    @Select(" update users set user_name = #{userName} where user_id = #{userId}; ")
+    @Select(" update users set user_name = #{userName},user_pass=#{userPass},user_realname=#{userRealname}  where user_id = #{userId}; ")
     @ResultMap("usersResultMap")
     void updateUser(Users user);
 
