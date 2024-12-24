@@ -65,18 +65,7 @@ public class UsersServiceImpl implements UsersService {
         sqlSession.close();
     }
 
-    @Override
-    public List<Users> selectAll() {
-        SqlSessionFactory factory = SqlSessionFactoryUtil.getSqlSessionFactory();
-        //获取SqlSession对象
-        SqlSession sqlSession = factory.openSession();
-        //获取mapper
-        UsersMapper usersMapper = sqlSession.getMapper(UsersMapper.class);
-        //调用方法
-        List<Users> users = usersMapper.sellect();
-        sqlSession.close();
-        return users;
-    }
+
 
 
     @Override
@@ -112,10 +101,26 @@ public class UsersServiceImpl implements UsersService {
 
 
     @Override
+    public List<Users> selectAll() {
+        SqlSessionFactory factory = SqlSessionFactoryUtil.getSqlSessionFactory();
+        //获取SqlSession对象
+        SqlSession sqlSession = factory.openSession();
+        //获取mapper
+        UsersMapper usersMapper = sqlSession.getMapper(UsersMapper.class);
+        //调用方法
+        List<Users> users = usersMapper.sellect();
+        sqlSession.close();
+        return users;
+    }
+
+    @Override
     public List<Users> selectById(Integer userId) {
         SqlSessionFactory factory = SqlSessionFactoryUtil.getSqlSessionFactory();
+        //获取SqlSession对象
         SqlSession sqlSession = factory.openSession();
+        //获取mapper
         UsersMapper userMapper = sqlSession.getMapper(UsersMapper.class);
+
         List<Users> user = userMapper.selectUserById(userId);
         sqlSession.commit();
         sqlSession.close();
