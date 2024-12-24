@@ -16,6 +16,7 @@ public interface UsersService {
 
     /**
      * 查询所有
+     *
      * @return
      */
     List<Users> selectAll();
@@ -27,6 +28,6 @@ public interface UsersService {
     void deteleUserById(Integer userId);
 
 
-    List<Users>selectById(Integer userId);
+    List<Users> selectById(Integer userId);
 
 }

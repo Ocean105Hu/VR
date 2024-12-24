@@ -126,6 +126,4 @@ public class UsersServiceImpl implements UsersService {
         sqlSession.close();
         return user;
     }
-
-
 }
