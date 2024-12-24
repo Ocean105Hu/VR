@@ -68,15 +68,7 @@ public class UsersServiceImpl implements UsersService {
 
 
 
-    @Override
-    public void addUser(Users user) {
-        SqlSessionFactory factory = SqlSessionFactoryUtil.getSqlSessionFactory();
-        SqlSession sqlSession = factory.openSession();
-        UsersMapper userMapper = sqlSession.getMapper(UsersMapper.class);
-        userMapper.addUser(user);
-        sqlSession.commit();
-        sqlSession.close();
-    }
+
 
     @Override
     public void deteleUserById(Integer userId) {
@@ -88,6 +80,16 @@ public class UsersServiceImpl implements UsersService {
         sqlSession.close();
     }
 
+
+    @Override
+    public void addUser(Users user) {
+        SqlSessionFactory factory = SqlSessionFactoryUtil.getSqlSessionFactory();
+        SqlSession sqlSession = factory.openSession();
+        UsersMapper userMapper = sqlSession.getMapper(UsersMapper.class);
+        userMapper.addUser(user);
+        sqlSession.commit();
+        sqlSession.close();
+    }
 
     @Override
     public void updateUser(Users user) {
