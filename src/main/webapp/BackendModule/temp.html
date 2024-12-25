@@ -202,8 +202,6 @@
         </form>
     </div>
 </div>
-
-
 <script>
     // 获取用户列表
     const list = [];
@@ -362,7 +360,7 @@
 
         const result = await response.json(); // 解析响应结果
         if (result == "1") {
-            getUserList(); // 更新用户列表
+            await getUserList(); // 更新用户列表
             closePopup(); // 关闭表单
         } else {
             alert('操作失败'); // 操作失败时提示用户
