@@ -18,12 +18,12 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Arrays;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 @WebServlet("/users/*")
 public class UsersServlet extends BaseServlet {
     private final UsersService usersService = new UsersServiceImpl();
-
-    //--------------------------------
 
     public void selectAll(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         List<Users> users = usersService.selectAll();
@@ -31,7 +31,6 @@ public class UsersServlet extends BaseServlet {
         resp.setContentType("text/json;charset=utf-8");
         resp.getWriter().write(jsonString);
     }
-
 
     public void selectById(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String line = req.getReader().readLine().replaceAll("[^0-9]", "");
@@ -48,7 +47,6 @@ public class UsersServlet extends BaseServlet {
         out.print(jsonString);  // 将 JSON 响应发送到前端
         out.flush();
     }
-
 
     public void addUser(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         //1.接受数据
@@ -85,12 +83,16 @@ public class UsersServlet extends BaseServlet {
         //1.接受数据
         BufferedReader br = req.getReader();
         String params = br.readLine();//json字符串
-        
-        int[] ids = JSON.parseObject(params, int[].class);
-        System.out.println(Arrays.toString(ids));
+        String regex = "\\[(.*?)]";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(params);
+        while (matcher.find()) params = matcher.group(1);
+        String[] arrs = params.split(",");
+        System.out.println(Arrays.toString(arrs));
+        int[] ids = new int[arrs.length];
+        for (int i = 0; i < ids.length; i++) ids[i] = Integer.parseInt(arrs[i]);
         //3.调用service
         usersService.deleteByIds(ids);
-
         resp.setContentType("application/json");
         resp.setCharacterEncoding("UTF-8");
         PrintWriter out = resp.getWriter();
@@ -98,15 +100,6 @@ public class UsersServlet extends BaseServlet {
         out.flush();
     }
 
-
-    /**
-     * 修改用户数据
-     *
-     * @param req
-     * @param resp
-     * @throws ServletException
-     * @throws IOException
-     */
     public void updateUser(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         //1.接受数据
         BufferedReader br = req.getReader();
@@ -124,10 +117,6 @@ public class UsersServlet extends BaseServlet {
         out.print("1");  // 将 JSON 响应发送到前端
         out.flush();
     }
-
-
-    //--------------------------------
-
 
     //登录
     public void longin(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -185,10 +174,7 @@ public class UsersServlet extends BaseServlet {
             write.write(id);
         } else write.write("0");
         //登录失败
-
-
     }
-
 
     //注册
     public void register(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
