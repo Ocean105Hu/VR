@@ -110,7 +110,6 @@ public class UsersServlet extends BaseServlet {
         System.out.println(user);
         //3.调用service
         usersService.updateUser(user);
-
         resp.setContentType("application/json");
         resp.setCharacterEncoding("UTF-8");
         PrintWriter out = resp.getWriter();
