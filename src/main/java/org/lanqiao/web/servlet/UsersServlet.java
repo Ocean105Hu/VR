@@ -89,16 +89,20 @@ public class UsersServlet extends BaseServlet {
      * @throws IOException
      */
     public void updateUser(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String str = req.getReader().readLine();
-        System.out.println(str);
-        Users user = JSONObject.parseObject(str, Users.class);
-//        int id = (Integer) hashMap.get("userId");
+        //1.接受数据
+        BufferedReader br = req.getReader();
+        String params = br.readLine();//json字符串
+        System.out.println(params);
+        //2.转为User对象
+        Users user = JSON.parseObject(params, Users.class);
+        System.out.println(user);
+        //3.调用service
         usersService.updateUser(user);
 
         resp.setContentType("application/json");
         resp.setCharacterEncoding("UTF-8");
         PrintWriter out = resp.getWriter();
-        out.print(resp);  // 将 JSON 响应发送到前端
+        out.print("1");  // 将 JSON 响应发送到前端
         out.flush();
     }
 

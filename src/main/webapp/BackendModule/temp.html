@@ -187,7 +187,8 @@
         <h3 id="formTitle">添加/编辑用户</h3>
         <form id="userForm">
             <!-- 隐藏字段，用于存储用户ID（用于编辑时识别用户） -->
-            <input type="hidden" id="userId">
+            <label for="userId">用户ID:</label>
+            <input type="text" id="userId" required placeholder="请输入用户ID">
             <label for="userName">用户名:</label>
             <input type="text" id="userName" required placeholder="请输入用户名">
             <label for="userPass">密码:</label>
@@ -205,6 +206,8 @@
 
 <script>
     // 获取用户列表
+    const list = [];
+
     async function getUserList() {
         const response = await fetch('/users/selectAll?action=get'); // 发送GET请求获取用户数据
         const users = await response.json(); // 解析JSON格式的响应数据
@@ -215,9 +218,9 @@
     function renderUserList(users) {
         const userList = document.getElementById('userList');
         userList.innerHTML = ''; // 清空现有的用户列表
-
         // 遍历用户数据，生成表格行
         users.forEach(user => {
+            list.push(user.userId)
             const row = document.createElement('tr');
             row.innerHTML = `
                     <td><input type="checkbox" class="userCheckbox" data-id="${user.userId}"></td>
@@ -286,10 +289,10 @@
         const user = await response.json(); // 解析用户数据
         // 填充表单中的数据
         document.getElementById('formTitle').textContent = '编辑用户';
-        document.getElementById('userId').value = user.id;
-        document.getElementById('userName').value = user.userName;
-        document.getElementById('userPass').value = user.userPass;
-        document.getElementById('userRealname').value = user.userRealname;
+        document.getElementById('userId').value = user[0].userId;
+        document.getElementById('userName').value = user[0].userName;
+        document.getElementById('userPass').value = user[0].userPass;
+        document.getElementById('userRealname').value = user[0].userRealname;
         openPopup(); // 打开表单弹出框
     }
 
@@ -334,10 +337,14 @@
         const userPass = document.getElementById('userPass').value;
         const userRealname = document.getElementById('userRealname').value;
 
-        const userData = {userName, userPass, userRealname}; // 构造用户数据对象
+        const userData = {userId, userName, userPass, userRealname}; // 构造用户数据对象
 
-        let response;
-        if (userId) {
+        let response
+
+        let flag = false;
+        for (let i = 0; i < list.length; i++) if (userId == list[i]) flag = true
+
+        if (flag) {
             // 编辑用户
             response = await fetch(`/users/updateUser`, {
                 method: 'POST',
