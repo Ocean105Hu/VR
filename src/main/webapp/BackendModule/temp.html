@@ -261,15 +261,15 @@
         }
 
         // 发送批量删除请求到后端
-        const response = await fetch('/user-servlet?action=bulkDelete', {
+        const response = await fetch('/users/deleteByIds', {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({ids: selectedUserIds}) // 发送选中用户的ID数组
         });
 
         const result = await response.json(); // 解析响应结果
-        if (result.success) {
-            getUserList(); // 重新获取用户列表
+        if (result == "1") {
+            await getUserList(); // 重新获取用户列表
         } else {
             alert('批量删除失败'); // 如果删除失败，弹出提示
         }

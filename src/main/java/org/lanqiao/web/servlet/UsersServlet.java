@@ -16,6 +16,7 @@ import jakarta.servlet.annotation.WebServlet;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Arrays;
 import java.util.List;
 
 @WebServlet("/users/*")
@@ -84,12 +85,18 @@ public class UsersServlet extends BaseServlet {
         //1.接受数据
         BufferedReader br = req.getReader();
         String params = br.readLine();//json字符串
+        System.out.println(params);
         //2.转为Brand对象
         int[] ids = JSON.parseObject(params, int[].class);
+        System.out.println(Arrays.toString(ids));
         //3.调用service
         usersService.deleteByIds(ids);
 
-        resp.getWriter().write("1");
+        resp.setContentType("application/json");
+        resp.setCharacterEncoding("UTF-8");
+        PrintWriter out = resp.getWriter();
+        out.print("1");  // 将 JSON 响应发送到前端
+        out.flush();
     }
 
 
