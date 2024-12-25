@@ -78,8 +78,20 @@ public class UsersServlet extends BaseServlet {
         PrintWriter out = resp.getWriter();
         out.print("1");  // 将 JSON 响应发送到前端
         out.flush();
-
     }
+
+    public void deleteByIds(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        //1.接受数据
+        BufferedReader br = req.getReader();
+        String params = br.readLine();//json字符串
+        //2.转为Brand对象
+        int[] ids = JSON.parseObject(params, int[].class);
+        //3.调用service
+        usersService.deleteByIds(ids);
+
+        resp.getWriter().write("1");
+    }
+
 
     /**
      * 修改用户数据

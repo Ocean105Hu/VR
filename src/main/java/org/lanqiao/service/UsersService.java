@@ -30,4 +30,6 @@ public interface UsersService {
 
     List<Users> selectById(Integer userId);
 
+    void deleteByIds(int[] ids);
+
 }

@@ -69,6 +69,17 @@ public class UsersServiceImpl implements UsersService {
 
 
 
+    @Override
+    public void deleteByIds(int[] ids) {
+        SqlSessionFactory factory = SqlSessionFactoryUtil.getSqlSessionFactory();
+        SqlSession sqlSession = factory.openSession();
+        UsersMapper usersMapper = sqlSession.getMapper(UsersMapper.class);
+        usersMapper.deleteByIds(ids);
+        sqlSession.commit();
+        sqlSession.close();
+    }
+
+
 
     @Override
     public void deteleUserById(Integer userId) {

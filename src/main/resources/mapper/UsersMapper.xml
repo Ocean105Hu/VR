@@ -11,4 +11,11 @@
     </resultMap>
 
 
+    <delete id="deleteByIds">
+        delete from users where user_id in
+        <foreach collection="ids" item="id" separator="," open="(" close=")">
+            #{userId}
+        </foreach>
+    </delete>
+
 </mapper>
