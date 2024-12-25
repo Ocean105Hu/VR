@@ -85,8 +85,7 @@ public class UsersServlet extends BaseServlet {
         //1.接受数据
         BufferedReader br = req.getReader();
         String params = br.readLine();//json字符串
-        System.out.println(params);
-        //2.转为Brand对象
+        
         int[] ids = JSON.parseObject(params, int[].class);
         System.out.println(Arrays.toString(ids));
         //3.调用service
@@ -102,6 +101,7 @@ public class UsersServlet extends BaseServlet {
 
     /**
      * 修改用户数据
+     *
      * @param req
      * @param resp
      * @throws ServletException
@@ -126,26 +126,6 @@ public class UsersServlet extends BaseServlet {
     }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     //--------------------------------
 
 
@@ -163,7 +143,7 @@ public class UsersServlet extends BaseServlet {
 //        String pass = (String) hashMap.get("password");
 //        System.out.println(name);
 //        System.out.println(pass);
-        
+
         String loginCheckLabel = req.getParameter("login__check-label");
         //调用方法
         Users users = usersService.longin(name, pass);
