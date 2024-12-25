@@ -53,7 +53,7 @@ public interface UsersMapper {
     void updateUser(Users user);
 
 
-    void deleteByIds(int[] ids);
+    void deleteByIds(@Param("ids") int[] ids);
 
 
 

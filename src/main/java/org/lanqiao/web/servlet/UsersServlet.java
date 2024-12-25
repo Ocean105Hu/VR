@@ -82,6 +82,7 @@ public class UsersServlet extends BaseServlet {
     public void deleteByIds(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         //1.接受数据
         BufferedReader br = req.getReader();
+        System.out.println();
         String params = br.readLine();//json字符串
         String regex = "\\[(.*?)]";
         Pattern pattern = Pattern.compile(regex);
@@ -91,6 +92,10 @@ public class UsersServlet extends BaseServlet {
         System.out.println(Arrays.toString(arrs));
         int[] ids = new int[arrs.length];
         for (int i = 0; i < ids.length; i++) ids[i] = Integer.parseInt(arrs[i]);
+
+        System.out.println("1");
+        System.out.println(Arrays.toString(ids));
+
         //3.调用service
         usersService.deleteByIds(ids);
         resp.setContentType("application/json");
@@ -104,6 +109,7 @@ public class UsersServlet extends BaseServlet {
         //1.接受数据
         BufferedReader br = req.getReader();
         String params = br.readLine();//json字符串
+
         System.out.println(params);
         //2.转为User对象
         Users user = JSON.parseObject(params, Users.class);
