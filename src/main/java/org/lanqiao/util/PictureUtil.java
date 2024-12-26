@@ -11,16 +11,14 @@ import jakarta.servlet.http.Part;
 
 import java.io.IOException;
 import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.StandardCopyOption;
 
 @MultipartConfig
 public class PictureUtil {
 
 
-    public static void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public static void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
         // 获取上传的文件
-        Part filePart = request.getPart("image");
+        Part filePart = req.getPart("image");
         String fileName = filePart.getSubmittedFileName();
 
         // 设置存储路径
@@ -33,16 +31,16 @@ public class PictureUtil {
         OutputStream out = Files.newOutputStream(new File(savePath).toPath());
 
         // 将文件内容写入输出流
-        byte[] buffer = new byte[1024];
+        byte[] bytes = new byte[1024];
         int bytesRead;
-        while ((bytesRead = fileContent.read(buffer)) != -1) {
-            out.write(buffer, 0, bytesRead);
+        while ((bytesRead = fileContent.read(bytes)) != -1) {
+            out.write(bytes, 0, bytesRead);
         }
 
         // 关闭流
         fileContent.close();
         out.close();
 
-        response.getWriter().write("文件上传成功！");
+        res.getWriter().write("文件上传成功！");
     }
 }
