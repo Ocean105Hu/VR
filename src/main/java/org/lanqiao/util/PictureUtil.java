@@ -32,9 +32,9 @@ public class PictureUtil {
 
         // 将文件内容写入输出流
         byte[] bytes = new byte[1024];
-        int bytesRead;
-        while ((bytesRead = fileContent.read(bytes)) != -1) {
-            out.write(bytes, 0, bytesRead);
+        int len;
+        while ((len = fileContent.read(bytes)) != -1) {
+            out.write(bytes, 0, len);
         }
 
         // 关闭流
