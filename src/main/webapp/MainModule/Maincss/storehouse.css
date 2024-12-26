@@ -1,9 +1,217 @@
 * {
     margin: 0;
     box-sizing: border-box;
+    padding: 0;
 }
 
+body {
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    box-sizing: border-box;
+    margin: 0;
+    font-family: "Helvetica Neue", Helvetica, Tahoma, Arial, 'Microsoft Yahei', 'Hiragino Sans GB', 'WenQuanYi Micro Hei', sans-serif;
+    line-height: 1.53846154;
+    color: #353535;
+    background: #FFFFFF;
+    font-size: 12px;
+}
+
+.container {
+    margin-top: 70px;
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    font-family: "Helvetica Neue", Helvetica, Tahoma, Arial, 'Microsoft Yahei', 'Hiragino Sans GB', 'WenQuanYi Micro Hei', sans-serif;
+    line-height: 1.53846154;
+    color: #353535;
+    font-size: 12px;
+    box-sizing: border-box;
+    padding-right: 10px;
+    padding-left: 10px;
+    margin-right: auto;
+    margin-left: auto;
+    max-width: 1420px;
+    padding-bottom: 100px;
+}
+
+.row {
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    font-family: "Helvetica Neue", Helvetica, Tahoma, Arial, 'Microsoft Yahei', 'Hiragino Sans GB', 'WenQuanYi Micro Hei', sans-serif;
+    line-height: 1.53846154;
+    color: #353535;
+    font-size: 12px;
+    box-sizing: border-box;
+    margin-right: -10px;
+    margin-left: -10px;
+}
+
+.pictures_content {
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    font-family: "Helvetica Neue", Helvetica, Tahoma, Arial, 'Microsoft Yahei', 'Hiragino Sans GB', 'WenQuanYi Micro Hei', sans-serif;
+    line-height: 1.53846154;
+    color: #353535;
+    font-size: 12px;
+    box-sizing: border-box;
+}
+
+.lattice {
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    font-family: "Helvetica Neue", Helvetica, Tahoma, Arial, 'Microsoft Yahei', 'Hiragino Sans GB', 'WenQuanYi Micro Hei', sans-serif;
+    line-height: 1.53846154;
+    color: #353535;
+    font-size: 12px;
+    box-sizing: border-box;
+    position: relative;
+    min-height: 1px;
+    float: left;
+    width: 25%;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.card {
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    font-family: "Helvetica Neue", Helvetica, Tahoma, Arial, 'Microsoft Yahei', 'Hiragino Sans GB', 'WenQuanYi Micro Hei', sans-serif;
+    line-height: 1.53846154;
+    font-size: 12px;
+    box-sizing: border-box;
+    background: 0 0;
+    text-decoration: none;
+    color: #999999;
+    position: relative;
+    display: block;
+    padding: 0;
+    overflow: hidden;
+    transition: all .4s cubic-bezier(.175, .885, .32, 1);
+    margin-bottom: 10px;
+    box-shadow: 0 2px 4px 0 rgba(4, 0, 0, 0.1);
+    border-radius: 5px;
+    border: 1px solid rgba(244, 244, 244, 1);
+}
+
+.wrapper-img {
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    font-family: "Helvetica Neue", Helvetica, Tahoma, Arial, 'Microsoft Yahei', 'Hiragino Sans GB', 'WenQuanYi Micro Hei', sans-serif;
+    line-height: 1.53846154;
+    font-size: 12px;
+    color: #999999;
+    box-sizing: border-box;
+    height: 230px;
+    overflow: hidden;
+}
+
+.changeImgSize {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: all 0.3s;
+}
+
+.changeImgSize,
+.pull-left img,
+.pull-right img{
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    font-family: "Helvetica Neue", Helvetica, Tahoma, Arial, 'Microsoft Yahei', 'Hiragino Sans GB', 'WenQuanYi Micro Hei', sans-serif;
+    line-height: 1.53846154;
+    font-size: 12px;
+    color: #999999;
+    box-sizing: border-box;
+    border: 0;
+    max-width: 100%;
+    vertical-align: middle;
+}
+
+
+.changeImgSize:hover {
+    transform: scale(1.2);
+}
+
+.lattice-name {
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    line-height: 1.53846154;
+    box-sizing: border-box;
+    color: #333333;
+    font-size: 12px;
+    font-family: "MicrosoftYaHei", serif;
+    font-weight: 700;
+    padding: 20px 10px 10px;
+    min-height: 67px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+}
+
+.card-actions {
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    font-family: "Helvetica Neue", Helvetica, Tahoma, Arial, 'Microsoft Yahei', 'Hiragino Sans GB', 'WenQuanYi Micro Hei', sans-serif;
+    line-height: 1.53846154;
+    font-size: 12px;
+    color: #999999;
+    box-sizing: border-box;
+    padding: 0 10px 10px 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.pull-left {
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    font-family: "Helvetica Neue", Helvetica, Tahoma, Arial, 'Microsoft Yahei', 'Hiragino Sans GB', 'WenQuanYi Micro Hei', sans-serif;
+    line-height: 1.53846154;
+    font-size: 12px;
+    color: #999999;
+    box-sizing: border-box;
+    float: left !important;
+}
+
+.pull-right {
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    font-family: "Helvetica Neue", Helvetica, Tahoma, Arial, 'Microsoft Yahei', 'Hiragino Sans GB', 'WenQuanYi Micro Hei', sans-serif;
+    line-height: 1.53846154;
+    font-size: 12px;
+    color: #999999;
+    box-sizing: border-box;
+    float: right !important;
+}
+
+.rephoto-author {
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    line-height: 1.53846154;
+    box-sizing: border-box;
+    margin-left: 10px;
+    font-family: "MicrosoftYaHei", serif;
+    font-size: 12px;
+    color: #444444;
+}
+
+.pull-left img {
+    width: 28px;
+    height: 28px;
+    overflow: hidden;
+}
+
+.pull-right img {
+    width: 18px;
+    height: 12px;
+    display: inline-block;
+    margin-bottom: 3px;
+    margin-right: 5px;
+}
+
+
 .nav {
+    border-bottom: rgba(0, 0, 0, 0.14) solid 1px;
     width: 100%;
     height: 60px;
     position: fixed;
@@ -33,9 +241,17 @@
     display: flex;
 }
 
+.blue {
+    color: #1caad8 !important;
+}
+
 .nav_content {
     position: relative;
     right: 25%;
+}
+
+.bar_content:hover {
+    color: #1caad8 !important;
 }
 
 .nav_content ul {
@@ -44,6 +260,8 @@
 }
 
 .nav_content li {
+    cursor: pointer;
+    font-size: 14px;
     list-style: none;
 }
 
