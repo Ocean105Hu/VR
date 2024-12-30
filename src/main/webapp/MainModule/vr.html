@@ -25,11 +25,11 @@
     <div id="container"></div>
     <script>
         $(document).ready(function(){
-            //初始化场景
+            //场景
             const scene = new THREE.Scene();
-            //初始化相机
+            //相机
             const camera = new THREE.PerspectiveCamera(55, window.innerWidth/window.innerHeight, 0.1, 1000);
-            //初始化渲染器
+            //渲染器
             const renderer = new THREE.WebGLRenderer();
             renderer.setSize(window.innerWidth, window.innerHeight);
             renderer.render(scene, camera);
@@ -37,7 +37,7 @@
                 requestAnimationFrame(animate);
                 renderer.render(scene, camera);
             });
-            //设置相机位置
+            //相机
             camera.position.z = 2;
             const index = sessionStorage.getItem('index');
             console.log(index);
@@ -66,22 +66,20 @@
             });
             
             $('#container').append(renderer.domElement);
-            //创建一个控制器
+            //控制器
             const controls = new THREE.OrbitControls(camera, renderer.domElement);
             controls.enableDamping = true;
             controls.dampingFactor = 0.25;
-            controls.enableZoom = true; // 启用缩放
+            controls.enableZoom = true; // 缩放
             controls.zoomSpeed = 10.0; // 缩放速度
-            controls.minDistance = -100; // 最小距离
+            controls.minDistance = -100; // 距离
             controls.maxDistance = 1;
-            // 渲染循环
             function animate() {
                 requestAnimationFrame(animate);
                 controls.update(); // 更新控制器
                 renderer.render(scene, camera);
             }
             animate();
-            // 处理窗口大小变化
             window.addEventListener('resize', () => {
                 camera.aspect = window.innerWidth / window.innerHeight;
                 camera.updateProjectionMatrix();
