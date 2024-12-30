@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <link rel="stylesheet" href="./Maincss/Main.css">
+    <script src="./Mainjs/jquery-3.7.1.min.js"></script>
 </head>
 <body>
     <div class="nav">
@@ -46,15 +47,15 @@
             </h2>
         </div>
         <div class="content_box">
-            <div class="box1">
+            <div class="box1" data-index="1-0">
                 <div class="wrapper-img">
-                    <img src="./img/boximg_1.png" alt="">
+                    <img src="./img/vr_img/1-0/thumb.jpg" alt="">
                 </div>
-                <div class="box_content">马来西亚-吉隆坡VR全景</div>
+                <div class="box_content">泸州职业技术学院</div>
                 <div class="author">
                     <div class="pull-left">
                         <img src="./img/icon.png" alt="">
-                        <span>云览世界</span>
+                        <span>泸职院</span>
                     </div>
                     <div class="pull-right">
                         <img src="./img/see.png" alt="">
@@ -62,15 +63,15 @@
                     </div>
                 </div>
             </div>
-            <div class="box1">
+            <div class="box1" data-index="1-1">
                 <div class="wrapper-img">
-                    <img src="./img/boximg_1.png" alt="">
+                    <img src="./img/vr_img/1-1/thumb.jpg" alt="">
                 </div>
-                <div class="box_content">马来西亚-吉隆坡VR全景</div>
+                <div class="box_content">云南大理古城VR全景</div>
                 <div class="author">
                     <div class="pull-left">
                         <img src="./img/icon.png" alt="">
-                        <span>云览世界</span>
+                        <span>哈密瓜王子</span>
                     </div>
                     <div class="pull-right">
                         <img src="./img/see.png" alt="">
@@ -78,15 +79,31 @@
                     </div>
                 </div>
             </div>
-            <div class="box1">
+            <div class="box1" data-index="1-2">
                 <div class="wrapper-img">
-                    <img src="./img/boximg_1.png" alt="">
+                    <img src="./img/vr_img/1-2/thumb.png" alt="">
                 </div>
-                <div class="box_content">马来西亚-吉隆坡VR全景</div>
+                <div class="box_content">俄罗斯贝加尔湖畔</div>
                 <div class="author">
                     <div class="pull-left">
                         <img src="./img/icon.png" alt="">
-                        <span>云览世界</span>
+                        <span>俄罗斯大使馆</span>
+                    </div>
+                    <div class="pull-right">
+                        <img src="./img/see.png" alt="">
+                        <p>6668</p>
+                    </div>
+                </div>
+            </div>
+            <div class="box1" data-index="1-3">
+                <div class="wrapper-img">
+                    <img src="./img/vr_img/1-3/thumb.jpg" alt="">
+                </div>
+                <div class="box_content">重庆-洪崖洞VR全景</div>
+                <div class="author">
+                    <div class="pull-left">
+                        <img src="./img/icon.png" alt="">
+                        <span>tiger</span>
                     </div>
                     <div class="pull-right">
                         <img src="./img/see.png" alt="">
@@ -94,15 +111,95 @@
                     </div>
                 </div>
             </div>
-            <div class="box1">
+            <div class="box1" data-index="1-4">
                 <div class="wrapper-img">
-                    <img src="./img/boximg_1.png" alt="">
+                    <img src="./img/vr_img/1-4/thumb.png" alt="">
                 </div>
-                <div class="box_content">马来西亚-吉隆坡VR全景</div>
+                <div class="box_content">日本-东京塔VR全景</div>
                 <div class="author">
                     <div class="pull-left">
                         <img src="./img/icon.png" alt="">
-                        <span>云览世界</span>
+                        <span>sj</span>
+                    </div>
+                    <div class="pull-right">
+                        <img src="./img/see.png" alt="">
+                        <p>3452</p>
+                    </div>
+                </div>
+            </div>
+            <div class="box1" data-index="1-5">
+                <div class="wrapper-img">
+                    <img src="./img/vr_img/1-5/彭浪屿.jpg" alt="">
+                </div>
+                <div class="box_content">彭浪屿VR全景</div>
+                <div class="author">
+                    <div class="pull-left">
+                        <img src="./img/icon.png" alt="">
+                        <span>周亚鹏</span>
+                    </div>
+                    <div class="pull-right">
+                        <img src="./img/see.png" alt="">
+                        <p>78246</p>
+                    </div>
+                </div>
+            </div>
+            <div class="box1" data-index="1-6">
+                <div class="wrapper-img">
+                    <img src="./img/vr_img/1-6/天府广场.jpg" alt="">
+                </div>
+                <div class="box_content">成都-天府广场VR全景</div>
+                <div class="author">
+                    <div class="pull-left">
+                        <img src="./img/icon.png" alt="">
+                        <span>zxh</span>
+                    </div>
+                    <div class="pull-right">
+                        <img src="./img/see.png" alt="">
+                        <p>25497</p>
+                    </div>
+                </div>
+            </div>
+            <div class="box1" data-index="1-7">
+                <div class="wrapper-img">
+                    <img src="./img/vr_img/1-7/纳玛峰-贡嘎西坡.png" alt="">
+                </div>
+                <div class="box_content">纳玛峰-贡嘎西坡VR全景</div>
+                <div class="author">
+                    <div class="pull-left">
+                        <img src="./img/icon.png" alt="">
+                        <span>hyq</span>
+                    </div>
+                    <div class="pull-right">
+                        <img src="./img/see.png" alt="">
+                        <p>335</p>
+                    </div>
+                </div>
+            </div>
+            <div class="box1" data-index="1-8">
+                <div class="wrapper-img">
+                    <img src="./img/vr_img/1-8/成都-金融城.png" alt="">
+                </div>
+                <div class="box_content">成都-金融城VR全景</div>
+                <div class="author">
+                    <div class="pull-left">
+                        <img src="./img/icon.png" alt="">
+                        <span>邓强</span>
+                    </div>
+                    <div class="pull-right">
+                        <img src="./img/see.png" alt="">
+                        <p>79541</p>
+                    </div>
+                </div>
+            </div>
+            <div class="box1" data-index="1-9">
+                <div class="wrapper-img">
+                    <img src="./img/vr_img/1-9/现代风格.png" alt="">
+                </div>
+                <div class="box_content">现代风格</div>
+                <div class="author">
+                    <div class="pull-left">
+                        <img src="./img/icon.png" alt="">
+                        <span>装修</span>
                     </div>
                     <div class="pull-right">
                         <img src="./img/see.png" alt="">
@@ -110,131 +207,35 @@
                     </div>
                 </div>
             </div>
-            <div class="box1">
+            <div class="box1" data-index="1-10">
                 <div class="wrapper-img">
-                    <img src="./img/boximg_1.png" alt="">
+                    <img src="./img/vr_img/1-10/thumb.jpg" alt="">
                 </div>
-                <div class="box_content">马来西亚-吉隆坡VR全景</div>
+                <div class="box_content">超市案例</div>
                 <div class="author">
                     <div class="pull-left">
                         <img src="./img/icon.png" alt="">
-                        <span>云览世界</span>
+                        <span>supermarket</span>
                     </div>
                     <div class="pull-right">
                         <img src="./img/see.png" alt="">
-                        <p>83385</p>
+                        <p>16548</p>
                     </div>
                 </div>
             </div>
-            <div class="box1">
+            <div class="box1" data-index="1-11">
                 <div class="wrapper-img">
-                    <img src="./img/boximg_1.png" alt="">
+                    <img src="./img/vr_img/1-11/thumb.jpg" alt="">
                 </div>
-                <div class="box_content">马来西亚-吉隆坡VR全景</div>
+                <div class="box_content">故宫-太和殿广场</div>
                 <div class="author">
                     <div class="pull-left">
                         <img src="./img/icon.png" alt="">
-                        <span>云览世界</span>
+                        <span>北京</span>
                     </div>
                     <div class="pull-right">
                         <img src="./img/see.png" alt="">
-                        <p>83385</p>
-                    </div>
-                </div>
-            </div>
-            <div class="box1">
-                <div class="wrapper-img">
-                    <img src="./img/boximg_1.png" alt="">
-                </div>
-                <div class="box_content">马来西亚-吉隆坡VR全景</div>
-                <div class="author">
-                    <div class="pull-left">
-                        <img src="./img/icon.png" alt="">
-                        <span>云览世界</span>
-                    </div>
-                    <div class="pull-right">
-                        <img src="./img/see.png" alt="">
-                        <p>83385</p>
-                    </div>
-                </div>
-            </div>
-            <div class="box1">
-                <div class="wrapper-img">
-                    <img src="./img/boximg_1.png" alt="">
-                </div>
-                <div class="box_content">马来西亚-吉隆坡VR全景</div>
-                <div class="author">
-                    <div class="pull-left">
-                        <img src="./img/icon.png" alt="">
-                        <span>云览世界</span>
-                    </div>
-                    <div class="pull-right">
-                        <img src="./img/see.png" alt="">
-                        <p>83385</p>
-                    </div>
-                </div>
-            </div>
-            <div class="box1">
-                <div class="wrapper-img">
-                    <img src="./img/boximg_1.png" alt="">
-                </div>
-                <div class="box_content">马来西亚-吉隆坡VR全景</div>
-                <div class="author">
-                    <div class="pull-left">
-                        <img src="./img/icon.png" alt="">
-                        <span>云览世界</span>
-                    </div>
-                    <div class="pull-right">
-                        <img src="./img/see.png" alt="">
-                        <p>83385</p>
-                    </div>
-                </div>
-            </div>
-            <div class="box1">
-                <div class="wrapper-img">
-                    <img src="./img/boximg_1.png" alt="">
-                </div>
-                <div class="box_content">马来西亚-吉隆坡VR全景</div>
-                <div class="author">
-                    <div class="pull-left">
-                        <img src="./img/icon.png" alt="">
-                        <span>云览世界</span>
-                    </div>
-                    <div class="pull-right">
-                        <img src="./img/see.png" alt="">
-                        <p>83385</p>
-                    </div>
-                </div>
-            </div>
-            <div class="box1">
-                <div class="wrapper-img">
-                    <img src="./img/boximg_1.png" alt="">
-                </div>
-                <div class="box_content">马来西亚-吉隆坡VR全景</div>
-                <div class="author">
-                    <div class="pull-left">
-                        <img src="./img/icon.png" alt="">
-                        <span>云览世界</span>
-                    </div>
-                    <div class="pull-right">
-                        <img src="./img/see.png" alt="">
-                        <p>83385</p>
-                    </div>
-                </div>
-            </div>
-            <div class="box1">
-                <div class="wrapper-img">
-                    <img src="./img/boximg_1.png" alt="">
-                </div>
-                <div class="box_content">马来西亚-吉隆坡VR全景</div>
-                <div class="author">
-                    <div class="pull-left">
-                        <img src="./img/icon.png" alt="">
-                        <span>云览世界</span>
-                    </div>
-                    <div class="pull-right">
-                        <img src="./img/see.png" alt="">
-                        <p>83385</p>
+                        <p>101010</p>
                     </div>
                 </div>
             </div>
@@ -344,5 +345,14 @@
             </div>
         </div>
     </div>
+    <script>
+        $(document).ready(()=>{
+            $('.box1').click(function(){
+                var index = $(this).attr('data-index');
+                sessionStorage.setItem('index',index);
+                window.open('vr.html');
+            });
+        });
+    </script>
 </body>
 </html>
