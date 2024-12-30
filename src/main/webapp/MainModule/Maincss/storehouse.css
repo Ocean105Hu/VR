@@ -17,7 +17,7 @@ body {
 }
 
 .container {
-    margin-top: 70px;
+    margin-top: 10px;
     -webkit-text-size-adjust: 100%;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
     font-family: "Helvetica Neue", Helvetica, Tahoma, Arial, 'Microsoft Yahei', 'Hiragino Sans GB', 'WenQuanYi Micro Hei', sans-serif;
@@ -113,7 +113,7 @@ body {
 
 .changeImgSize,
 .pull-left img,
-.pull-right img{
+.pull-right img {
     -webkit-text-size-adjust: 100%;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
     font-family: "Helvetica Neue", Helvetica, Tahoma, Arial, 'Microsoft Yahei', 'Hiragino Sans GB', 'WenQuanYi Micro Hei', sans-serif;
@@ -282,4 +282,32 @@ body {
 .nav_login a {
     text-decoration: none;
     color: #000;
+}
+
+.channel {
+    padding: 15px 20px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    border-bottom: 1px solid #ececee;
+}
+
+.channel li {
+    list-style-type: none;
+    font-size: 16px;
+    line-height: 30px;
+    cursor: pointer;
+    font-family: "MicrosoftYaHei";
+    padding-right: 40px;
+    color: #666666;
+}
+
+.channel li a {
+    color: #666666;
+}
+
+.channel li a.active {
+    color: #1caad8;
+    padding-bottom: 0;
+    border-bottom: 2px solid #1caad8;
 }
