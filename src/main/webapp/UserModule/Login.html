@@ -110,8 +110,7 @@
                     if (resp.data == "1") {
                         window.location.href = 'http://localhost:8080/BackendModule/temp.html';
                     } else if (resp.data != "0") {
-                        console.log(resp.data)
-                        window.location.href = 'http://localhost:8080/MainModule/Main.html';
+                        window.location.href = `http://localhost:8080/MainModule/Main.html?username=${encodeURIComponent(username)}`;
                     } else if (resp.data == "0") alert('密码或者账号错误，请重新输入！！！')
                 });
             }

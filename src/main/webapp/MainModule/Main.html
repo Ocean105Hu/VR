@@ -347,6 +347,11 @@
     </div>
     <script>
         $(document).ready(()=>{
+            const urlParams = new URLSearchParams(window.location.search);
+            const username = urlParams.get('username');
+            if(username != null){
+                $('.nav_login a').text(username);
+            }
             $('.box1').click(function(){
                 var index = $(this).attr('data-index');
                 sessionStorage.setItem('index',index);
