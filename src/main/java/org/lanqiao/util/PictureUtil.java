@@ -21,9 +21,19 @@ public class PictureUtil {
         Part filePart = req.getPart("image");
         String fileName = filePart.getSubmittedFileName();
 
+        //获取文件索引
+        String folderPath = "webapp/MainModule/img/vr_img/";
+        File folder = new File(folderPath);
+        File[] subfolders = folder.listFiles(File::isDirectory);
+        int index = subfolders.length-1;
         // 设置存储路径
-        String savePath = "D:/1/" + fileName;
 
+        String newFolderPath = "webapp/MainModule/img/vr_img/1-"+index;
+        File newFolder = new File(newFolderPath);
+        if (!newFolder.exists()) {
+            newFolder.mkdirs(); // 创建文件夹及其父目录
+        }
+        String savePath = newFolderPath + File.separator + fileName;
         // 获取输入流
         InputStream fileContent = filePart.getInputStream();
 
