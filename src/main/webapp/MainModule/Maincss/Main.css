@@ -1,8 +1,9 @@
-*{
+* {
     margin: 0;
     box-sizing: border-box;
 }
-.nav{
+
+.nav {
     width: 100%;
     height: 60px;
     position: fixed;
@@ -14,57 +15,71 @@
     right: 0;
     z-index: 2;
 }
-.nav div{
+
+.nav div {
     margin-bottom: 10px;
 }
-.nav_logo{
+
+.nav_logo {
     background-color: #00a8eb;
     margin-left: 10px;
 }
-.nav_logo img{
+
+.nav_logo img {
     width: 150px;
 }
-.navbar{
+
+.navbar {
     display: flex;
 }
-.nav_content{
+
+.nav_content {
     position: relative;
     right: 25%;
 }
-.nav_content ul{
+
+.nav_content ul {
+    cursor: pointer;
     width: 500px;
     justify-content: space-evenly;
 }
-.nav_content li{
+
+.nav_content li {
     list-style: none;
 }
-.nav_login{
+
+.nav_login {
     display: flex;
     align-items: center;
     height: 40px;
     position: relative;
     right: 20px;
 }
-.nav_login img{
+
+.nav_login img {
     width: 30px;
     height: 30px;
     margin-right: 15px;
 }
-.nav_login a{
+
+.nav_login a {
     text-decoration: none;
     color: #000;
 }
-.vrshow{
+
+.vrshow {
     position: relative;
     top: 50px;
     width: 100%;
     height: 620px;
 }
-.vrshow iframe{
+
+.vrshow iframe {
     width: 100%;
     height: 100%;
 }
-.vrtext p:first-child{
+
+.vrtext p:first-child {
     position: absolute;
     top: 25%;
     left: 35%;
@@ -73,7 +88,8 @@
     font-weight: 400;
     color: rgba(255, 255, 255, 1);
 }
-.vrshow p:last-of-type{
+
+.vrshow p:last-of-type {
     position: absolute;
     top: 35%;
     left: 36%;
@@ -81,7 +97,8 @@
     font-family: MicrosoftYaHei;
     color: rgba(255, 255, 255, 1);
 }
-.vrbtn button{
+
+.vrbtn button {
     position: absolute;
     top: 45%;
     left: 45%;
@@ -92,63 +109,75 @@
     border: 1px solid rgba(255, 255, 255, 1);
     color: #ffffff
 }
-.title{
+
+.title {
     width: 500px;
     margin: 0 auto;
     text-align: center;
 }
-.container{
+
+.container {
     position: relative;
     top: 100px;
-    max-width: 1160px;
+    max-width: 1300px;
     margin: 0 auto;
 }
-.retext-remuted{
+
+.retext-remuted {
     display: block;
     font-size: 14px;
     font-weight: 400;
     line-height: 1;
     color: #999999;
 }
-.content_box{
+
+.content_box {
     width: 100%;
     overflow: hidden;
     margin-top: 30px;
     height: 1350px;
 }
-.box1{
-    width: 25%;
+
+.box1 {
+    width: 24%;
     float: left;
-    padding-right: 5px;
     box-shadow: 0px 2px 4px 0px rgba(4, 0, 0, 0.1);
     border-radius: 5px;
     border: 1px solid rgba(244, 244, 244, 1);
     margin-bottom: 10px;
+    margin-right: 10px;
 }
-.wrapper-img{
+
+.wrapper-img {
     overflow: hidden;
+    border-radius: 5px;
+    width: 310px;
+    height: 310px;
 }
-.wrapper-img img{
+
+.wrapper-img img {
     width: 100%;
     height: 100%;
-    border-radius: 5px;
 }
-.box_content{
+
+.box_content {
     padding-top: 20px;
     min-height: 67px;
     font-size: 12px;
     font-weight: 600;
 }
-.author{
+
+.author {
     position: relative;
 }
 
-.pull-left img{
+.pull-left img {
     width: 28px;
     height: 28px;
     margin-left: 10px;
 }
-.pull-left span{
+
+.pull-left span {
     margin-left: 10px;
     font-family: "MicrosoftYaHei";
     font-size: 12px;
@@ -156,23 +185,28 @@
     position: relative;
     bottom: 10px;
 }
-.pull-right img{
+
+.pull-right img {
     width: 18px;
     height: 12px;
     display: inline-block;
 }
-.pull-right p{
+
+.pull-right p {
     font-size: 12px;
     color: #999;
     display: inline-block;
 }
-.pull-left{
+
+.pull-left {
     float: left;
 }
-.pull-right{
+
+.pull-right {
     float: right;
 }
-.lookmore{
+
+.lookmore {
     text-align: center;
     height: 36px;
     width: 140px;
@@ -181,7 +215,8 @@
     top: 100px;
     margin: 0 auto;
 }
-.lookmore button{
+
+.lookmore button {
     background: rgba(28, 170, 216, 1);
     height: 36px;
     width: 140px;
@@ -189,27 +224,32 @@
     border: 1px solid rgba(255, 255, 255, 1);
     color: #ffffff;
 }
-.indroduce{
+
+.indroduce {
     position: relative;
     top: 200px;
     color: #f4f4f4;
     margin: 0 auto;
     max-width: 1160px;
 }
-.leftimg1{
+
+.leftimg1 {
     display: inline-block;
 }
-.leftimg1 img{
+
+.leftimg1 img {
     width: 460px;
     height: 300px;
 }
-.rightcontent{
+
+.rightcontent {
     display: inline-block;
     position: relative;
     bottom: 100px;
     margin-left: 50px;
 }
-.rightcontent button{
+
+.rightcontent button {
     background: rgba(28, 170, 216, 1);
     height: 36px;
     width: 140px;
@@ -218,73 +258,90 @@
     color: #ffffff;
     margin-top: 30px;
 }
-.intext{
+
+.intext {
     font-size: 24px;
     font-family: MicrosoftYaHei-Bold;
     font-weight: bold;
     color: rgba(68, 68, 68, 1);
     padding-bottom: 10px;
 }
-.insmall{
+
+.insmall {
     font-size: 14px;
     font-weight: 400;
     line-height: 1;
     color: #999999;
 }
-.in2,.in3{
+
+.in2, .in3 {
     margin-top: 100px;
 }
-.in2 .rightcontent{
+
+.in2 .rightcontent {
     text-align: right;
 }
-.in2 .leftimg1{
+
+.in2 .leftimg1 {
     margin-left: 50px;
 }
-.in2 .leftimg1 img{
+
+.in2 .leftimg1 img {
     width: 300px;
     height: 380px;
 }
-.in3content{
+
+.in3content {
     text-align: center;
     margin-bottom: 50px;
 }
-.cards{
+
+.cards {
     display: flex;
     flex-wrap: wrap;
     min-width: 1200px;
     justify-content: space-around;
 }
-.ecard{
+
+.ecard {
     position: relative;
     list-style: none;
     margin-top: 10px;
 }
-.ecard,.ecard>img:first-of-type{
+
+.ecard, .ecard > img:first-of-type {
     width: 280px;
     height: 130px;
 }
-.ecard:hover>img{
+
+.ecard:hover > img {
     background-color: #1CAAD8;
     opacity: .4;
 }
-.textinph{
+
+.textinph {
     position: absolute;
     top: 35%;
     left: 43%;
 }
-.retext-muted{
+
+.retext-muted {
     color: #000;
 }
-.in3{
+
+.in3 {
     padding-bottom: 100px;
 }
-.blue{
+
+.blue {
     color: #1caad8 !important;
 }
-.bar_content:hover{
+
+.bar_content:hover {
     color: #1caad8 !important;
 }
-.wrapper-img img:hover{
+
+.wrapper-img img:hover {
     transition: all .3s;
     transform: scale(1.2);
 }

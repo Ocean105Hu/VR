@@ -3,14 +3,17 @@ package org.lanqiao.web.servlet;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson2.JSONObject;
+import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.Part;
 import org.lanqiao.pojo.Users;
 import org.lanqiao.service.UsersService;
 import org.lanqiao.service.impl.UsersServiceImpl;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
+import org.lanqiao.util.PictureUtil;
 
 
 import java.io.BufferedReader;
@@ -21,6 +24,7 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+@MultipartConfig
 @WebServlet("/users/*")
 public class UsersServlet extends BaseServlet {
     private final UsersService usersService = new UsersServiceImpl();
@@ -211,5 +215,11 @@ public class UsersServlet extends BaseServlet {
         resp.setCharacterEncoding("utf-8");
         PrintWriter write = resp.getWriter();
         write.write("1");
+    }
+
+    //上传图片
+    public void picture(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // 获取上传的文件
+        PictureUtil.doPost(request, response);
     }
 }

@@ -7,11 +7,10 @@
     <title>Document</title>
     <link rel="stylesheet" href="./Maincss/message.css">
 </head>
-
 <body class="by">
 <div class="nav">
     <div class="nav_logo">
-        <img src="./img/top3.png">
+        <img src="./img/top3.png" alt="">
     </div>
     <div class="nav_content">
         <ul class="navbar">
@@ -83,11 +82,20 @@
         </div>
     </div>
 </div>
-
-
-
-
-
+<script src="./Mainjs/jquery-3.7.1.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('.bar_content').click(function () {
+                console.log($(this).index());
+                if($(this).index()===0){
+                    window.location.href = 'Main.html';
+                }else if($(this).index()===1){
+                    window.location.href = 'storehouse.html';
+                }else if($(this).index()===4){
+                    window.location.href = 'message.html';
+                }
+            });
+    });
+</script>
 </body>
-
 </html>
