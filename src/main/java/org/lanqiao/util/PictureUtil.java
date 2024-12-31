@@ -11,6 +11,7 @@ import jakarta.servlet.http.Part;
 
 import java.io.IOException;
 import java.nio.file.Files;
+import java.util.Arrays;
 
 @MultipartConfig
 public class PictureUtil {
@@ -24,8 +25,12 @@ public class PictureUtil {
         //获取文件索引
         String folderPath = "webapp/MainModule/img/vr_img/";
         File folder = new File(folderPath);
-        File[] subfolders = folder.listFiles(File::isDirectory);
-        int index = subfolders.length-1;
+        File[] subfolders = folder.listFiles();
+        System.out.println(Arrays.toString(subfolders));
+        int index = 0;
+        if (subfolders != null) {
+            index = subfolders.length;
+        }
         // 设置存储路径
 
         String newFolderPath = "webapp/MainModule/img/vr_img/1-"+index;
@@ -50,7 +55,7 @@ public class PictureUtil {
         // 关闭流
         fileContent.close();
         out.close();
-
+        res.setContentType("text/html;charset=utf-8");
         res.getWriter().write("文件上传成功！");
     }
 }
