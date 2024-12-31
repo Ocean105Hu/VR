@@ -48,9 +48,9 @@
 
             function checkImageFormat(url, callback) {
                 const img = new Image();
-                img.onload = () => callback(url + '.jpg');
-                img.onerror = () => callback(url + '.png');
-                img.src = url + '.jpg';
+                img.onload = () => callback(url + '.JPG');
+                img.onerror = () => callback(url + '.PNG');
+                img.src = url + '.JPG';
             }
 
             const promises = urls.map(name => new Promise(resolve => {
