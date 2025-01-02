@@ -12,25 +12,25 @@ import jakarta.servlet.http.Part;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.util.Arrays;
-import java.util.Comparator;
 
 @MultipartConfig
 public class PictureUtil {
 
 
     public static void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-        // 获取上传的文件
+        String filePath = "E:/A-My-Code/Code/项目/大二上册年级项目/VR/src/main/webapp/MainModule/img/11";
+        File file = new File(filePath);
+
+        //获取文件索引
         Part filePart = req.getPart("image");
         String fileName = filePart.getSubmittedFileName();
+
         // 设置存储路径
-        String newFolderPath = req.getServletContext().getRealPath("/MainModule/img/vr_img/");
-        File newFolder = new File(newFolderPath);
-        if (!newFolder.exists()) {
-            newFolder.mkdirs(); // 创建文件夹及其父目录
-        }
-        String savePath = newFolderPath + File.separator + fileName;
+        String savePath = filePath + "/" + fileName;
+        System.out.println(savePath);
         // 获取输入流
         InputStream fileContent = filePart.getInputStream();
+
         // 创建输出流
         OutputStream out = Files.newOutputStream(new File(savePath).toPath());
 
@@ -44,7 +44,7 @@ public class PictureUtil {
         // 关闭流
         fileContent.close();
         out.close();
-        res.setContentType("text/html;charset=utf-8");
+
         res.getWriter().write("文件上传成功！");
     }
 }
