@@ -4,11 +4,7 @@ $(document).ready(() => {
     if (username != null) {
         $('.nav_login a').text(username);
     }
-    $('.lattice').click(function () {
-        var index = $(this).attr('data-index');
-        sessionStorage.setItem('index', index);
-        window.open('vr.html');
-    });
+
     $('.bar_content').click(function () {
         console.log($(this).index());
         if ($(this).index() === 0) {
@@ -23,12 +19,12 @@ $(document).ready(() => {
         {text:"台湾",author:"中国台湾"},
         {text:"北京-八达岭",author:"爱吃哈密瓜"}
     ]
-    let preindex = ($('.lattice').last().index())+1;
+    let preindex = ($('.lattice').last().index());
     console.log(preindex);
-    let insertdiv =(inedx,text,author)=>`<div class="lattice" data-index="1-${index}">
+    let insertdiv =(preindex,text,author)=>`<div class="lattice" data-index="1-${preindex+1}">
                 <a class="card" target="_blank">
                     <div class="wrapper-img">
-                        <img class="changeImgSize" src="./img/vr_img/1-${index}/thumb.jpg" alt="马来西亚-吉隆坡VR全景">
+                        <img class="changeImgSize" src="./img/vr_img/1-${preindex+1}/thumb.jpg" alt="马来西亚-吉隆坡VR全景">
                     </div>
                     <div class="lattice-name">${text}</div>
                     <div class="card-actions">
@@ -43,15 +39,22 @@ $(document).ready(() => {
                     </div>
                 </a>
             </div>`;
-    let imagePath = `img/vr_img/1-${preindex}/pano_b.jpg`;
-
+    let imagePath = `img/vr_img/1-${preindex+1}/pano_b.jpg`;
+    console.log(imagePath);
     let img = new Image();
     img.src = imagePath;
 
     img.onload = function() {
         arr.forEach((i)=>{
-            $('pictures_content').append(insertdiv(preindex,i.text,i.author))
+            $('#pictures_content').append(insertdiv(preindex,i.text,i.author));
+            preindex++;
+            console.log(1111.);
         });
     };
-
+    $('.lattice').click(function () {
+        var index = $(this).attr('data-index');
+        console.log(index)
+        sessionStorage.setItem('index', index);
+        window.open('vr.html');
+    });
 })

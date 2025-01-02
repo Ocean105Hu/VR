@@ -4,6 +4,7 @@
     <option name="state">
       <map>
         <entry key="file://$PROJECT_DIR$/src/main/webapp/ImgUpLoadModule/ImgUpload.html" value="file://$PROJECT_DIR$/src/main/webapp/ImgUpLoadModule" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/MainModule/PictureUpload.html" value="file://$PROJECT_DIR$/src/main/webapp/MainModule" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/MainModule/storehouse.html" value="file://$PROJECT_DIR$/src/main/webapp/MainModule" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/UserModule/Login.html" value="file://$PROJECT_DIR$/src/main/webapp/UserModule" />
       </map>

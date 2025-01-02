@@ -6,6 +6,7 @@
     <title>发布全景 蓝桥见微VR全景平台</title>
     <link rel="stylesheet" href="ImgUploadCss/ImgUploadcss.css">
     <link type="img/蓝桥logo.png" rel="shortcut icon" href="img/wikipedia.ico"/>
+    <script src="../MainModule/Mainjs/jquery-3.7.1.min.js"></script>
 </head>
 <body>
         <!-- 头部内容区域 -->
@@ -16,11 +17,11 @@
                 </div>
                 <div class="nav_leftli">
                     <ul>
-                        <li><a href="#">探索</a></li>
-                        <li><a href="#">360°VR全景</a></li>
-                        <li><a href="#">VR视频</a></li>
-                        <li><a href="#">3D全景</a></li>
-                        <li><a href="#">最新资讯</a></li>
+                        <li>探索</li>
+                        <li>360°VR全景</li>
+                        <li>VR视频</li>
+                        <li>3D全景</li>
+                        <li>最新资讯</li>
                     </ul>
                 </div>
                 <div class="nav_rightli">
@@ -168,5 +169,21 @@
         xhr.send(formData); // 发送表单数据
     });
 </script>
+ <script>
+     $(document).ready(()=>{
+         const urlParams = new URLSearchParams(window.location.search);
+         const username = urlParams.get('username');
+         $('.nav_leftli ul li').click(function () {
+             console.log($(this).index());
+             if($(this).index()===0){
+                 window.location.href = `../MainModule/Main.html?username=${encodeURIComponent(username)}`;
+             }else if($(this).index()===1){
+                 window.location.href = `../MainModule/storehouse.html?username=${encodeURIComponent(username)}`;
+             }else if($(this).index()===4){
+                 window.location.href = '../MainModule/message.html';
+             }
+         });
+     });
+ </script>
 </body>
 </html>

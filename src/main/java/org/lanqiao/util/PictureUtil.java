@@ -50,13 +50,14 @@ public class PictureUtil {
             fileContent = filepart.getInputStream();
 
             // 创建输出流
-            OutputStream out = Files.newOutputStream(new File(savePath).toPath());
+            try (OutputStream out = Files.newOutputStream(new File(savePath).toPath())) {
 
-            // 将文件内容写入输出流
-            byte[] bytes = new byte[1024];
-            int len;
-            while ((len = fileContent.read(bytes)) != -1) {
-                out.write(bytes, 0, len);
+                // 将文件内容写入输出流
+                byte[] bytes = new byte[1024];
+                int len;
+                while ((len = fileContent.read(bytes)) != -1) {
+                    out.write(bytes, 0, len);
+                }
             }
         }
 
