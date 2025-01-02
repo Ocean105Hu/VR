@@ -41,12 +41,12 @@
         <div class="login__check">
             <div class="login__check-group">
                 <input type="checkbox" class="login__check-input" id="login-check" v-model="dis">
-                <label for="login-check" class="login__check-label">Remember me</label>
+                <label for="login-check" class="login__check-label">记住密码</label>
             </div>
-            <a href="Retrieve.html" class="login__forgot">Forgot Password?</a>
+            <a href="Retrieve.html" class="login__forgot">忘记密码?</a>
         </div>
-        <button type="button" class="login__button" @click="login()">Login</button>
-        <p class="login__register">Don't have an account? <a href="Register.html">Register</a></p>
+        <button type="button" class="login__button" @click="login()">登录</button>
+        <p class="login__register">没有账号? <a href="Register.html">注册</a></p>
     </form>
 </div>
 <script src="//unpkg.com/layui@2.9.11/dist/layui.js"></script>
@@ -111,7 +111,9 @@
                         window.location.href = 'http://localhost:8080/BackendModule/temp.html';
                     } else if (resp.data != "0") {
                         window.location.href = `http://localhost:8080/MainModule/Main.html?username=${encodeURIComponent(username)}`;
-                    } else if (resp.data == "0") alert('密码或者账号错误，请重新输入！！！')
+                    } else if (resp.data == "0") {
+                        alert('密码或者账号错误，请重新输入！！！')
+                    }
                 });
             }
         }
