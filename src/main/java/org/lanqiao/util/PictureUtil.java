@@ -25,7 +25,7 @@ public class PictureUtil {
 
     public static void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
         //获取文件索引
-        File folder = new File("D:\\pratise\\VR\\src\\main\\webapp\\MainModule\\img\\vr_img");
+        File folder = new File("E:\\A-My-Code\\Code\\项目\\大二上册年级项目\\VR\\src\\main\\webapp\\MainModule\\img\\vr_img");
         // 列出所有子文件夹
         File[] subFolders = folder.listFiles(File::isDirectory);
         out.println(Arrays.toString(subFolders));
@@ -35,7 +35,7 @@ public class PictureUtil {
             index = subFolders.length;
             out.println(index);
         }
-        String filePath = "D:\\pratise\\VR\\src\\main\\webapp\\MainModule\\img\\vr_img\\1-" + index;
+        String filePath = "E:\\A-My-Code\\Code\\项目\\大二上册年级项目\\VR\\src\\main\\webapp\\MainModule\\img\\vr_img\\1-" + index;
         File file = new File(filePath);
         out.println(file.mkdir());
         Collection<Part> filePart = req.getParts();
