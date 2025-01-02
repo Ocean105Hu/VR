@@ -18,8 +18,9 @@ public class PictureUtil {
 
 
     public static void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-        String filePath = "E:/A-My-Code/Code/项目/大二上册年级项目/VR/src/main/webapp/MainModule/img/11";
+        String filePath = "E:/A-My-Code/Code/项目/大二上册年级项目/VR/src/main/webapp/MainModule/img/vr_img/11";
         File file = new File(filePath);
+        System.out.println(file.mkdir());
 
         //获取文件索引
         Part filePart = req.getPart("image");

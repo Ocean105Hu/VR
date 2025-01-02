@@ -42,7 +42,6 @@ public class UsersServlet extends BaseServlet {
         Integer userId = Integer.valueOf(line);
         //调用service
         List<Users> users = usersService.selectById(userId);
-        System.out.println(users);
         String jsonString = JSON.toJSONString(users);
         System.out.println(jsonString);
         resp.setContentType("application/json");
