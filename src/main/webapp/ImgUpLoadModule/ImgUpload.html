@@ -50,10 +50,10 @@
         <div class="upload">
             <div class="row-nav">
                 <!-- <div class="row-nav-btn" tabindex="500"> -->
-                <form action="/users/picture" method="post" enctype="multipart/form-data">
+                <form id="uploadForm" enctype="multipart/form-data">
                     <!--注意input 必须要有name属性，后台才能接收到-->
                     <label id="file_chosen" for="image" data-placeholder="选择文件"></label>
-                    <input id="image" type="file" name="image" accept="image/*"/>
+                    <input id="image" type="file" name="image" multiple accept="image/*"/>
                     <input id="upload_img" type="submit" value="上传全景图片"/>
                 </form>
                 <!-- <a href="">选择全景图片</a> -->
@@ -149,5 +149,24 @@
             </div>
         </div>
     </div>
+<script>
+    document.getElementById('uploadForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // 防止表单默认提交
+
+        const formData = new FormData(this);
+        const xhr = new XMLHttpRequest();
+        xhr.open('POST', '/users/picture', true);
+
+        xhr.onload = function() {
+            if (xhr.status === 200) {
+                alert('上传成功！');
+            } else {
+                alert('上传失败！');
+            }
+        };
+
+        xhr.send(formData); // 发送表单数据
+    });
+</script>
 </body>
 </html>
